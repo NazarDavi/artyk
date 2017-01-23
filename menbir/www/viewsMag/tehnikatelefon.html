@@ -1,0 +1,33 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.markaTel">
+                <ion-item>Telefonyň Markasy
+                    <span class="item-note">{{ot.markaTel}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.modelTel">
+                <ion-item>Markaň Modeli
+                    <span class="item-note">{{ot.modelTel}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.markaTel">
+                <ion-item>Марка Телефона
+                    <span class="item-note">{{ot.markaTel}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.modelTel">
+                <ion-item>Модель Марки
+                    <span class="item-note">{{ot.modelTel}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

@@ -1,0 +1,82 @@
+
+
+    <!--Görnüşi-->
+    <div layout="row">
+        <md-input-container>
+            <label>Görnüşi</label>
+            <md-select  ng-model="maglumatlar.jaygornus">
+                <md-option  value="Jaý">Jaý</md-option>
+                <md-option  value="Daça">Daça</md-option>
+                <md-option  value="Kottej">Kottej</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <!--Etaž Sany-->
+    <div layout="row">
+        <md-input-container>
+            <label>Etaž Sany</label>
+            <md-select  ng-model="maglumatlar.etaz">
+                <md-option  value="1">1</md-option>
+                <md-option  value="2">2</md-option>
+                <md-option  value="3">3</md-option>
+                <md-option  value="4">4</md-option>
+                <md-option  value="5">5</md-option>
+                <md-option  value="5+">5+</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <!--Stenaň Materialy-->
+    <div layout="row">
+        <md-input-container>
+            <label>Stenaň Materialy</label>
+            <md-select  ng-model="maglumatlar.stenmat">
+                <md-option  value="Kerpiç">Kerpiç</md-option>
+                <md-option  value="Panel">Panel</md-option>
+                <md-option  value="Beton">Beton</md-option>
+                <md-option  value="Agaçdan">Agaçdan</md-option>
+                <md-option  value="Başga">Başga</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <!--Jaýyň Meýdany-->
+    <div layout="row">
+        <md-input-container class="md-block">
+            <label>Jaýyň Meýdany (m<sup><small>2</small></sup>-da)</label>
+            <input type="number" name="jaymeydan" ng-model="maglumatlar.jaymeydan" min="4"
+                   max="500" />
+            <div ng-messages="myForm.jaymeydan.$error" multiple md-auto-hide="false">
+                <div ng-message="min">
+                    Min 4m<sup><small>2</small></sup>
+                </div>
+                <div ng-message="max">
+                    Max 500m<sup><small>2</small></sup>
+                </div>
+            </div>
+        </md-input-container>
+    </div>
+    <!--Mellek Meýdany-->
+    <div layout="row">
+        <md-input-container class="md-block">
+            <label>Mellek Meýdany (m<sup><small>2</small></sup>-da)</label>
+            <input type="number" step="1" name="meydan" ng-model="maglumatlar.meydan" min="10"
+                   max="1000" /><small>Sotyh-da: {{(formInfo.meydan/10)}}</small>
+            <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                <div ng-message="min">
+                    Min 10m<sup><small>2</small></sup>
+                </div>
+                <div ng-message="max">
+                    Max 1000m<sup><small>2</small></sup>
+                </div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <!--Şähere Çenli Aralyk-->
+    <div layout="row">
+        <md-input-container>
+            <label>Şähere Çenli Aralyk</label>
+            <md-select  ng-model="maglumatlar.daslyk">
+                <md-option ng-repeat="ara in aralykshaher"  value="{{ara}}">{{ara}}km</md-option>
+            </md-select>
+        </md-input-container>
+    </div>

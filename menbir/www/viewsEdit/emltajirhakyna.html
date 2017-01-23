@@ -1,0 +1,17 @@
+
+    <!--Tutýan Meýdany-->
+    <div layout="row">
+        <md-input-container class="md-block">
+            <label>Tutýan Meýdany (m<sup><small>2</small></sup>-da)</label>
+            <input type="number" name="meydan" ng-model="maglumatlar.meydan" min="0"
+                   max="10000" />
+            <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                <div ng-message="min">
+                    Min 0m<sup><small>2</small></sup>
+                </div>
+                <div ng-message="max">
+                    Max 10000m<sup><small>2</small></sup>
+                </div>
+            </div>
+        </md-input-container>
+    </div>

@@ -1,0 +1,598 @@
+<form name="myForm">
+        <!--SINA WE TEKER-->
+        <div ng-show="tekerler">
+            <!--Diametr-->
+            <div layout="row" layout-align="center" flex>
+                <md-input-container flex="58">
+                    <label>Diametr? (Tekeriň beýikligi)</label>
+                    <md-select  ng-model="formInfo.tekDia">
+                        <md-option  value="R8(203">R8(203mm)</md-option>
+                        <md-option  value="R9(229">R9(229mm)</md-option>
+                        <md-option  value="R10(240">R10(254mm)</md-option>
+                        <md-option  value="R11(279">R11(279mm)</md-option>
+                        <md-option  value="R12(305">R12(305mm)</md-option>
+                        <md-option  value="R13(330">R13(330mm)</md-option>
+                        <md-option  value="R14(356">R14(356mm)</md-option>
+                        <md-option  value="R15(381">R15(381mm)</md-option>
+                        <md-option  value="R16(406">R16(406mm)</md-option>
+                        <md-option  value="R17(432">R17(432mm)</md-option>
+                        <md-option  value="R17.5(445">R17.5(445mm)</md-option>
+                        <md-option  value="R18(457">R18(457mm)</md-option>
+                        <md-option  value="R19(483">R19(483mm)</md-option>
+                        <md-option  value="R19.5(495">R19.5(495mm)</md-option>
+                        <md-option  value="R20(508">R20(508mm)</md-option>
+                        <md-option  value="R21(533">R21(533mm)</md-option>
+                        <md-option  value="R22(559">R22(559mm)</md-option>
+                        <md-option  value="R22.5(572">R22.5(572mm)</md-option>
+                        <md-option  value="R23(584">R23(584mm)</md-option>
+                        <md-option  value="R24(610">R24(610mm)</md-option>
+                        <md-option  value="R25(635">R25(635mm)</md-option>
+                        <md-option  value="R26(660">R26(660mm)</md-option>
+                        <md-option  value="R28(711">R28(711mm)</md-option>
+                        <md-option  value="R30(762">R30(762mm)</md-option>
+                        <md-option  value="R32(813">R32(813mm)</md-option>
+                        <md-option  value="R34(864">R34(864mm)</md-option>
+                        <md-option  value="R38(965">R38(965mm)</md-option>
+                        <md-option  value="R39(991">R39(991mm)</md-option>
+                        <md-option  value="R42(1067">R42(1067mm)</md-option>
+                        <md-option  value="R44(1118">R44(1118mm)</md-option>
+                        <md-option  value="R48(1219">R48(1219mm)</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--Ini-->
+                <md-input-container flex="42">
+                    <label>Ini(mm-da)</label>
+                    <md-select  ng-model="formInfo.tekIni">
+                        <md-option  value="115">115 mm</md-option>
+                        <md-option  value="125">125 mm</md-option>
+                        <md-option  value="130">130 mm</md-option>
+                        <md-option  value="135">135 mm</md-option>
+                        <md-option  value="145">145 mm</md-option>
+                        <md-option  value="155">155 mm</md-option>
+                        <md-option  value="165">165 mm</md-option>
+                        <md-option  value="175">175 mm</md-option>
+                        <md-option  value="185">185 mm</md-option>
+                        <md-option  value="195">195 mm</md-option>
+                        <md-option  value="205">205 mm</md-option>
+                        <md-option  value="215">215 mm</md-option>
+                        <md-option  value="225">225 mm</md-option>
+                        <md-option  value="230">230 mm</md-option>
+                        <md-option  value="235">235 mm</md-option>
+                        <md-option  value="245">245 mm</md-option>
+                        <md-option  value="255">255 mm</md-option>
+                        <md-option  value="265">265 mm</md-option>
+                        <md-option  value="275">275 mm</md-option>
+                        <md-option  value="285">285 mm</md-option>
+                        <md-option  value="295">295 mm</md-option>
+                        <md-option  value="305">305 mm</md-option>
+                        <md-option  value="315">315 mm</md-option>
+                        <md-option  value="325">325 mm</md-option>
+                        <md-option  value="335">335 mm</md-option>
+                        <md-option  value="345">345 mm</md-option>
+                        <md-option  value="355">355 mm</md-option>
+                        <md-option  value="360">360 mm</md-option>
+                        <md-option  value="365">365 mm</md-option>
+                        <md-option  value="375">375 mm</md-option>
+                        <md-option  value="380">380 mm</md-option>
+                        <md-option  value="385">385 mm</md-option>
+                        <md-option  value="395">395 mm</md-option>
+                        <md-option  value="400">400 mm</md-option>
+                        <md-option  value="405">405 mm</md-option>
+                        <md-option  value="415">415 mm</md-option>
+                        <md-option  value="420">420 mm</md-option>
+                        <md-option  value="425">425 mm</md-option>
+                        <md-option  value="435">435 mm</md-option>
+                        <md-option  value="445">445 mm</md-option>
+                        <md-option  value="455">455 mm</md-option>
+                        <md-option  value="470">470 mm</md-option>
+                        <md-option  value="480">480 mm</md-option>
+                        <md-option  value="495">495 mm</md-option>
+                        <md-option  value="500">500 mm</md-option>
+                        <md-option  value="525">525 mm</md-option>
+                        <md-option  value="530">530 mm</md-option>
+                        <md-option  value="550">550 mm</md-option>
+                        <md-option  value="600">600 mm</md-option>
+                        <md-option  value="605">605 mm</md-option>
+                        <md-option  value="620">620 mm</md-option>
+                        <md-option  value="650">650 mm</md-option>
+                        <md-option  value="700">700 mm</md-option>
+                        <md-option  value="710">710 mm</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <!--Beýikligi-->
+            <div layout="row" layout-align="center" flex>
+                <md-input-container flex="58">
+                    <label>Beýikligi(Diskden Ýokary)</label>
+                    <md-select  ng-model="formInfo.tekBey">
+                        <md-option  value="9.5">9.5 mm</md-option>
+                        <md-option  value="10.5">10.5 mm</md-option>
+                        <md-option  value="11.5">11.5 mm</md-option>
+                        <md-option  value="12.5">12.5 mm</md-option>
+                        <md-option  value="25">25 mm</md-option>
+                        <md-option  value="30">30 mm</md-option>
+                        <md-option  value="32">32 mm</md-option>
+                        <md-option  value="33">33 mm</md-option>
+                        <md-option  value="35">35 mm</md-option>
+                        <md-option  value="36">36 mm</md-option>
+                        <md-option  value="38">38 mm</md-option>
+                        <md-option  value="40">40 mm</md-option>
+                        <md-option  value="42">42 mm</md-option>
+                        <md-option  value="43">43 mm</md-option>
+                        <md-option  value="45">45 mm</md-option>
+                        <md-option  value="47">47 mm</md-option>
+                        <md-option  value="50">50 mm</md-option>
+                        <md-option  value="55">55 mm</md-option>
+                        <md-option  value="60">60 mm</md-option>
+                        <md-option  value="65">65 mm</md-option>
+                        <md-option  value="70">70 mm</md-option>
+                        <md-option  value="75">75 mm</md-option>
+                        <md-option  value="80">80 mm</md-option>
+                        <md-option  value="82">82 mm</md-option>
+                        <md-option  value="85">85 mm</md-option>
+                        <md-option  value="90">90 mm</md-option>
+                        <md-option  value="95">95 mm</md-option>
+                        <md-option  value="105">105 mm</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--Pasyly-->
+                <md-input-container flex="42">
+                    <label>Pasyly?</label>
+                    <md-select  ng-model="formInfo.tekPasyl">
+                        <md-option  value="Tomusky">Tomusky</md-option>
+                        <md-option  value="Gyşky">Gyşky</md-option>
+                        <md-option  value="Gyşky/Çüýli">Gyşky/Çüýli</md-option>
+                        <md-option  value="Ähli pasyl">Ähli pasyl</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <!--Os-->
+            <div layout="row" layout-align="center center" flex ng-show="OsBamyYok">
+                <md-input-container>
+                    <label>Özen(Os,Merkez)</label>
+                    <md-select  ng-model="formInfo.tekOs">
+                        <md-option  value="Öňki">Öňki</md-option>
+                        <md-option  value="Yzky">Yzky</md-option>
+                        <md-option  value="Öňki/Yzky">Öňki/Yzky</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <!--DISKLER-->
+        <div ng-if="dikler">
+            <!--Diametr-->
+            <div layout="row" layout-align="start" flex>
+                <md-input-container flex="50">
+                    <label>Diametr(Dýuýmda)</label>
+                    <md-select  ng-model="formInfo.diskDia">
+                        <md-option  value="4(102">4(102mm)</md-option>
+                        <md-option  value="6(152">6(152mm)</md-option>
+                        <md-option  value="7(178">7(178mm)</md-option>
+                        <md-option  value="8(203">8(203mm)</md-option>
+                        <md-option  value="9(229">9(229mm)</md-option>
+                        <md-option  value="10(240">10(240mm)</md-option>
+                        <md-option  value="11(279">11(279mm)</md-option>
+                        <md-option  value="12(305">12(305mm)</md-option>
+                        <md-option  value="13(330">13(330mm)</md-option>
+                        <md-option  value="14(356">14(356mm)</md-option>
+                        <md-option  value="15(381">15(381mm)</md-option>
+                        <md-option  value="16(406">16(406mm)</md-option>
+                        <md-option  value="16(419">16.5(419mm)</md-option>
+                        <md-option  value="17(432">17(432mm)</md-option>
+                        <md-option  value="17.5(445">17.5(445mm)</md-option>
+                        <md-option  value="18(457">18(457mm)</md-option>
+                        <md-option  value="19(483">19(483mm)</md-option>
+                        <md-option  value="19.5(495">19.5(495mm)</md-option>
+                        <md-option  value="20(508">20(508mm)</md-option>
+                        <md-option  value="21(533">21(533mm)</md-option>
+                        <md-option  value="22(559">22(559mm)</md-option>
+                        <md-option  value="22.5(572">22.5(572mm)</md-option>
+                        <md-option  value="23(584">23(584mm)</md-option>
+                        <md-option  value="24(610">24(610mm)</md-option>
+                        <md-option  value="25(635">25(635mm)</md-option>
+                        <md-option  value="26(660">26(660mm)</md-option>
+                        <md-option  value="28(711">28(711mm)</md-option>
+                        <md-option  value="30(762">30(762mm)</md-option>
+                        <md-option  value="32(813">32(813mm)</md-option>
+                        <md-option  value="34(864">34(864mm)</md-option>
+                        <md-option  value="38(965">38(965mm)</md-option>
+                        <md-option  value="39(991">39(991mm)</md-option>
+                        <md-option  value="42(1067">42(1067mm)</md-option>
+                        <md-option  value="44(1118">44(1118mm)</md-option>
+                        <md-option  value="48(1219">48(1219mm)</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--Ini-->
+                <md-input-container flex="50">
+                    <label>Ini(Dýuýmda)</label>
+                    <md-select  ng-model="formInfo.diskIni">
+                        <md-option  value="3.5(89">3.5(89mm)</md-option>
+                        <md-option  value="4(102">4(102mm)</md-option>
+                        <md-option  value="4.5(114">4.5(114mm)</md-option>
+                        <md-option  value="5(127">5(127mm)</md-option>
+                        <md-option  value="5.5(140">5.5(140mm)</md-option>
+                        <md-option  value="6(152">6(152mm)</md-option>
+                        <md-option  value="6.5(165">6.5(165mm)</md-option>
+                        <md-option  value="7(178">7(178mm)</md-option>
+                        <md-option  value="7.5(190">7(190mm)</md-option>
+                        <md-option  value="8(203">8(203mm)</md-option>
+                        <md-option  value="8.5(216">8.5(216mm)</md-option>
+                        <md-option  value="9(229">9(229mm)</md-option>
+                        <md-option  value="9.5(241">9.5(241mm)</md-option>
+                        <md-option  value="10(240">10(254mm)</md-option>
+                        <md-option  value="10.5(267">10.5(267mm)</md-option>
+                        <md-option  value="11(279">11(279mm)</md-option>
+                        <md-option  value="11.5(292">11.5(292mm)</md-option>
+                        <md-option  value="12(305">12(305mm)</md-option>
+                        <md-option  value="12.5(317">12.5(317mm)</md-option>
+                        <md-option  value="13(330">13(330mm)</md-option>
+                        <md-option  value="14(356">14(356mm)</md-option>
+                        <md-option  value="15(381">15(381mm)</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <!--Deşik sany-->
+            <div layout="row" layout-align="center center" flex>
+                <md-input-container>
+                    <label>Deşik sany(Berklemek üçin)</label>
+                    <md-select  ng-model="formInfo.diskSany">
+                        <md-option  value="3">3</md-option>
+                        <md-option  value="4">4</md-option>
+                        <md-option  value="5">5</md-option>
+                        <md-option  value="6">6</md-option>
+                        <md-option  value="8">8</md-option>
+                        <md-option  value="9">9</md-option>
+                        <md-option  value="10">10</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <!--Kalpak-->
+        <div ng-show="kalpak">
+            <!--Diametr-->
+            <div layout="row" layout-align="center center" flex>
+                <md-input-container>
+                    <label>Diametr(Dýuýmda)</label>
+                    <md-select  ng-model="formInfo.kalpakDia">
+                        <md-option  value="4(102">4(102mm)</md-option>
+                        <md-option  value="6(152">6(152mm)</md-option>
+                        <md-option  value="7(178">7(178mm)</md-option>
+                        <md-option  value="8(203">8(203mm)</md-option>
+                        <md-option  value="9(229">9(229mm)</md-option>
+                        <md-option  value="10(240">10(240mm)</md-option>
+                        <md-option  value="11(279">11(279mm)</md-option>
+                        <md-option  value="12(305">12(305mm)</md-option>
+                        <md-option  value="13(330">13(330mm)</md-option>
+                        <md-option  value="14(356">14(356mm)</md-option>
+                        <md-option  value="15(381">15(381mm)</md-option>
+                        <md-option  value="16(406">16(406mm)</md-option>
+                        <md-option  value="16(419">16.5(419mm)</md-option>
+                        <md-option  value="17(432">17(432mm)</md-option>
+                        <md-option  value="17.5(445">17.5(445mm)</md-option>
+                        <md-option  value="18(457">18(457mm)</md-option>
+                        <md-option  value="19(483">19(483mm)</md-option>
+                        <md-option  value="19.5(495">19.5(495mm)</md-option>
+                        <md-option  value="20(508">20(508mm)</md-option>
+                        <md-option  value="21(533">21(533mm)</md-option>
+                        <md-option  value="22(559">22(559mm)</md-option>
+                        <md-option  value="22.5(572">22.5(572mm)</md-option>
+                        <md-option  value="23(584">23(584mm)</md-option>
+                        <md-option  value="24(610">24(610mm)</md-option>
+                        <md-option  value="25(635">25(635mm)</md-option>
+                        <md-option  value="26(660">26(660mm)</md-option>
+                        <md-option  value="28(711">28(711mm)</md-option>
+                        <md-option  value="30(762">30(762mm)</md-option>
+                        <md-option  value="32(813">32(813mm)</md-option>
+                        <md-option  value="34(864">34(864mm)</md-option>
+                        <md-option  value="38(965">38(965mm)</md-option>
+                        <md-option  value="39(991">39(991mm)</md-option>
+                        <md-option  value="42(1067">42(1067mm)</md-option>
+                        <md-option  value="44(1118">44(1118mm)</md-option>
+                        <md-option  value="48(1219">48(1219mm)</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--SINA WE TEKER-->
+        <div ng-show="tekerler">
+            <!--Diametr-->
+            <div layout="row" layout-align="center" flex>
+                <md-input-container flex="58">
+                    <label>Диаметр? (Высота шины)</label>
+                    <md-select  ng-model="formInfo.tekDia">
+                        <md-option  value="R8(203">R8(203мм)</md-option>
+                        <md-option  value="R9(229">R9(229мм)</md-option>
+                        <md-option  value="R10(240">R10(254мм)</md-option>
+                        <md-option  value="R11(279">R11(279мм)</md-option>
+                        <md-option  value="R12(305">R12(305мм)</md-option>
+                        <md-option  value="R13(330">R13(330мм)</md-option>
+                        <md-option  value="R14(356">R14(356мм)</md-option>
+                        <md-option  value="R15(381">R15(381мм)</md-option>
+                        <md-option  value="R16(406">R16(406мм)</md-option>
+                        <md-option  value="R17(432">R17(432мм)</md-option>
+                        <md-option  value="R17.5(445">R17.5(445мм)</md-option>
+                        <md-option  value="R18(457">R18(457мм)</md-option>
+                        <md-option  value="R19(483">R19(483мм)</md-option>
+                        <md-option  value="R19.5(495">R19.5(495мм)</md-option>
+                        <md-option  value="R20(508">R20(508мм)</md-option>
+                        <md-option  value="R21(533">R21(533мм)</md-option>
+                        <md-option  value="R22(559">R22(559мм)</md-option>
+                        <md-option  value="R22.5(572">R22.5(572мм)</md-option>
+                        <md-option  value="R23(584">R23(584мм)</md-option>
+                        <md-option  value="R24(610">R24(610мм)</md-option>
+                        <md-option  value="R25(635">R25(635мм)</md-option>
+                        <md-option  value="R26(660">R26(660мм)</md-option>
+                        <md-option  value="R28(711">R28(711мм)</md-option>
+                        <md-option  value="R30(762">R30(762мм)</md-option>
+                        <md-option  value="R32(813">R32(813мм)</md-option>
+                        <md-option  value="R34(864">R34(864мм)</md-option>
+                        <md-option  value="R38(965">R38(965мм)</md-option>
+                        <md-option  value="R39(991">R39(991мм)</md-option>
+                        <md-option  value="R42(1067">R42(1067мм)</md-option>
+                        <md-option  value="R44(1118">R44(1118мм)</md-option>
+                        <md-option  value="R48(1219">R48(1219мм)</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--Ini-->
+                <md-input-container flex="42">
+                    <label>Ширина профиля(в мм)</label>
+                    <md-select  ng-model="formInfo.tekIni">
+                        <md-option  value="115">115 мм</md-option>
+                        <md-option  value="125">125 мм</md-option>
+                        <md-option  value="130">130 мм</md-option>
+                        <md-option  value="135">135 мм</md-option>
+                        <md-option  value="145">145 мм</md-option>
+                        <md-option  value="155">155 мм</md-option>
+                        <md-option  value="165">165 мм</md-option>
+                        <md-option  value="175">175 мм</md-option>
+                        <md-option  value="185">185 мм</md-option>
+                        <md-option  value="195">195 мм</md-option>
+                        <md-option  value="205">205 мм</md-option>
+                        <md-option  value="215">215 мм</md-option>
+                        <md-option  value="225">225 мм</md-option>
+                        <md-option  value="230">230 мм</md-option>
+                        <md-option  value="235">235 мм</md-option>
+                        <md-option  value="245">245 мм</md-option>
+                        <md-option  value="255">255 мм</md-option>
+                        <md-option  value="265">265 мм</md-option>
+                        <md-option  value="275">275 мм</md-option>
+                        <md-option  value="285">285 мм</md-option>
+                        <md-option  value="295">295 мм</md-option>
+                        <md-option  value="305">305 мм</md-option>
+                        <md-option  value="315">315 мм</md-option>
+                        <md-option  value="325">325 мм</md-option>
+                        <md-option  value="335">335 мм</md-option>
+                        <md-option  value="345">345 мм</md-option>
+                        <md-option  value="355">355 мм</md-option>
+                        <md-option  value="360">360 мм</md-option>
+                        <md-option  value="365">365 мм</md-option>
+                        <md-option  value="375">375 мм</md-option>
+                        <md-option  value="380">380 мм</md-option>
+                        <md-option  value="385">385 мм</md-option>
+                        <md-option  value="395">395 мм</md-option>
+                        <md-option  value="400">400 мм</md-option>
+                        <md-option  value="405">405 мм</md-option>
+                        <md-option  value="415">415 мм</md-option>
+                        <md-option  value="420">420 мм</md-option>
+                        <md-option  value="425">425 мм</md-option>
+                        <md-option  value="435">435 мм</md-option>
+                        <md-option  value="445">445 мм</md-option>
+                        <md-option  value="455">455 мм</md-option>
+                        <md-option  value="470">470 мм</md-option>
+                        <md-option  value="480">480 мм</md-option>
+                        <md-option  value="495">495 мм</md-option>
+                        <md-option  value="500">500 мм</md-option>
+                        <md-option  value="525">525 мм</md-option>
+                        <md-option  value="530">530 мм</md-option>
+                        <md-option  value="550">550 мм</md-option>
+                        <md-option  value="600">600 мм</md-option>
+                        <md-option  value="605">605 мм</md-option>
+                        <md-option  value="620">620 мм</md-option>
+                        <md-option  value="650">650 мм</md-option>
+                        <md-option  value="700">700 мм</md-option>
+                        <md-option  value="710">710 мм</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <!--Beýikligi-->
+            <div layout="row" layout-align="center" flex>
+                <md-input-container flex="58">
+                    <label>Высота профиля(в мм)</label>
+                    <md-select  ng-model="formInfo.tekBey">
+                        <md-option  value="9.5">9.5 мм</md-option>
+                        <md-option  value="10.5">10.5 мм</md-option>
+                        <md-option  value="11.5">11.5 мм</md-option>
+                        <md-option  value="12.5">12.5 мм</md-option>
+                        <md-option  value="25">25 мм</md-option>
+                        <md-option  value="30">30 мм</md-option>
+                        <md-option  value="32">32 мм</md-option>
+                        <md-option  value="33">33 мм</md-option>
+                        <md-option  value="35">35 мм</md-option>
+                        <md-option  value="36">36 мм</md-option>
+                        <md-option  value="38">38 мм</md-option>
+                        <md-option  value="40">40 мм</md-option>
+                        <md-option  value="42">42 мм</md-option>
+                        <md-option  value="43">43 мм</md-option>
+                        <md-option  value="45">45 мм</md-option>
+                        <md-option  value="47">47 мм</md-option>
+                        <md-option  value="50">50 мм</md-option>
+                        <md-option  value="55">55 мм</md-option>
+                        <md-option  value="60">60 мм</md-option>
+                        <md-option  value="65">65 мм</md-option>
+                        <md-option  value="70">70 мм</md-option>
+                        <md-option  value="75">75 мм</md-option>
+                        <md-option  value="80">80 мм</md-option>
+                        <md-option  value="82">82 мм</md-option>
+                        <md-option  value="85">85 мм</md-option>
+                        <md-option  value="90">90 мм</md-option>
+                        <md-option  value="95">95 мм</md-option>
+                        <md-option  value="105">105 мм</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--Pasyly-->
+                <md-input-container flex="42">
+                    <label>Сезонность?</label>
+                    <md-select  ng-model="formInfo.tekPasyl">
+                        <md-option  value="Tomusky">Летные</md-option>
+                        <md-option  value="Gyşky">Зимние</md-option>
+                        <md-option  value="Gyşky/Çüýli">Зимние/Шиповонные</md-option>
+                        <md-option  value="Ähli pasyl">Всесезонные</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <!--Os-->
+            <div layout="row" layout-align="center center" flex ng-show="OsBamyYok">
+                <md-input-container>
+                    <label>Ось</label>
+                    <md-select  ng-model="formInfo.tekOs">
+                        <md-option  value="Öňki">Передняя</md-option>
+                        <md-option  value="Yzky">Задняя</md-option>
+                        <md-option  value="Öňki/Yzky">Любая</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <!--DISKLER-->
+        <div ng-if="dikler">
+            <!--Diametr-->
+            <div layout="row" layout-align="start" flex>
+                <md-input-container flex="50">
+                    <label>Диаметр(В дюймах(в мм))</label>
+                    <md-select  ng-model="formInfo.diskDia">
+                        <md-option  value="4(102">4(102мм)</md-option>
+                        <md-option  value="6(152">6(152мм)</md-option>
+                        <md-option  value="7(178">7(178мм)</md-option>
+                        <md-option  value="8(203">8(203мм)</md-option>
+                        <md-option  value="9(229">9(229мм)</md-option>
+                        <md-option  value="10(240">10(240мм)</md-option>
+                        <md-option  value="11(279">11(279мм)</md-option>
+                        <md-option  value="12(305">12(305мм)</md-option>
+                        <md-option  value="13(330">13(330мм)</md-option>
+                        <md-option  value="14(356">14(356мм)</md-option>
+                        <md-option  value="15(381">15(381мм)</md-option>
+                        <md-option  value="16(406">16(406мм)</md-option>
+                        <md-option  value="16(419">16.5(419мм)</md-option>
+                        <md-option  value="17(432">17(432мм)</md-option>
+                        <md-option  value="17.5(445">17.5(445мм)</md-option>
+                        <md-option  value="18(457">18(457мм)</md-option>
+                        <md-option  value="19(483">19(483мм)</md-option>
+                        <md-option  value="19.5(495">19.5(495мм)</md-option>
+                        <md-option  value="20(508">20(508мм)</md-option>
+                        <md-option  value="21(533">21(533мм)</md-option>
+                        <md-option  value="22(559">22(559мм)</md-option>
+                        <md-option  value="22.5(572">22.5(572мм)</md-option>
+                        <md-option  value="23(584">23(584мм)</md-option>
+                        <md-option  value="24(610">24(610мм)</md-option>
+                        <md-option  value="25(635">25(635мм)</md-option>
+                        <md-option  value="26(660">26(660мм)</md-option>
+                        <md-option  value="28(711">28(711мм)</md-option>
+                        <md-option  value="30(762">30(762мм)</md-option>
+                        <md-option  value="32(813">32(813мм)</md-option>
+                        <md-option  value="34(864">34(864мм)</md-option>
+                        <md-option  value="38(965">38(965мм)</md-option>
+                        <md-option  value="39(991">39(991мм)</md-option>
+                        <md-option  value="42(1067">42(1067мм)</md-option>
+                        <md-option  value="44(1118">44(1118мм)</md-option>
+                        <md-option  value="48(1219">48(1219мм)</md-option>
+                    </md-select>
+                </md-input-container>
+            <!--Ini-->
+                <md-input-container flex="50">
+                    <label>Ini(Dýuýmda)</label>
+                    <md-select  ng-model="formInfo.diskIni">
+                        <md-option  value="3.5(89">3.5(89мм)</md-option>
+                        <md-option  value="4(102">4(102мм)</md-option>
+                        <md-option  value="4.5(114">4.5(114мм)</md-option>
+                        <md-option  value="5(127">5(127мм)</md-option>
+                        <md-option  value="5.5(140">5.5(140мм)</md-option>
+                        <md-option  value="6(152">6(152мм)</md-option>
+                        <md-option  value="6.5(165">6.5(165мм)</md-option>
+                        <md-option  value="7(178">7(178мм)</md-option>
+                        <md-option  value="7.5(190">7(190мм)</md-option>
+                        <md-option  value="8(203">8(203мм)</md-option>
+                        <md-option  value="8.5(216">8.5(216мм)</md-option>
+                        <md-option  value="9(229">9(229мм)</md-option>
+                        <md-option  value="9.5(241">9.5(241мм)</md-option>
+                        <md-option  value="10(240">10(254мм)</md-option>
+                        <md-option  value="10.5(267">10.5(267мм)</md-option>
+                        <md-option  value="11(279">11(279мм)</md-option>
+                        <md-option  value="11.5(292">11.5(292мм)</md-option>
+                        <md-option  value="12(305">12(305мм)</md-option>
+                        <md-option  value="12.5(317">12.5(317мм)</md-option>
+                        <md-option  value="13(330">13(330мм)</md-option>
+                        <md-option  value="14(356">14(356мм)</md-option>
+                        <md-option  value="15(381">15(381мм)</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <!--Deşik sany-->
+            <div layout="row" layout-align="center center" flex>
+                <md-input-container>
+                    <label>Количество отверстий</label>
+                    <md-select  ng-model="formInfo.diskSany">
+                        <md-option  value="3">3</md-option>
+                        <md-option  value="4">4</md-option>
+                        <md-option  value="5">5</md-option>
+                        <md-option  value="6">6</md-option>
+                        <md-option  value="8">8</md-option>
+                        <md-option  value="9">9</md-option>
+                        <md-option  value="10">10</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <!--Kalpak-->
+        <div ng-show="kalpak">
+            <!--Diametr-->
+            <div layout="row" layout-align="center center" flex>
+                <md-input-container>
+                    <label>Диаметр(В дюймах(в мм))</label>
+                    <md-select  ng-model="formInfo.kalpakDia">
+                        <md-option  value="4(102">4(102мм)</md-option>
+                        <md-option  value="6(152">6(152мм)</md-option>
+                        <md-option  value="7(178">7(178мм)</md-option>
+                        <md-option  value="8(203">8(203мм)</md-option>
+                        <md-option  value="9(229">9(229мм)</md-option>
+                        <md-option  value="10(240">10(240мм)</md-option>
+                        <md-option  value="11(279">11(279мм)</md-option>
+                        <md-option  value="12(305">12(305мм)</md-option>
+                        <md-option  value="13(330">13(330мм)</md-option>
+                        <md-option  value="14(356">14(356мм)</md-option>
+                        <md-option  value="15(381">15(381мм)</md-option>
+                        <md-option  value="16(406">16(406мм)</md-option>
+                        <md-option  value="16(419">16.5(419мм)</md-option>
+                        <md-option  value="17(432">17(432мм)</md-option>
+                        <md-option  value="17.5(445">17.5(445мм)</md-option>
+                        <md-option  value="18(457">18(457мм)</md-option>
+                        <md-option  value="19(483">19(483мм)</md-option>
+                        <md-option  value="19.5(495">19.5(495мм)</md-option>
+                        <md-option  value="20(508">20(508мм)</md-option>
+                        <md-option  value="21(533">21(533мм)</md-option>
+                        <md-option  value="22(559">22(559мм)</md-option>
+                        <md-option  value="22.5(572">22.5(572мм)</md-option>
+                        <md-option  value="23(584">23(584мм)</md-option>
+                        <md-option  value="24(610">24(610мм)</md-option>
+                        <md-option  value="25(635">25(635мм)</md-option>
+                        <md-option  value="26(660">26(660мм)</md-option>
+                        <md-option  value="28(711">28(711мм)</md-option>
+                        <md-option  value="30(762">30(762мм)</md-option>
+                        <md-option  value="32(813">32(813мм)</md-option>
+                        <md-option  value="34(864">34(864мм)</md-option>
+                        <md-option  value="38(965">38(965мм)</md-option>
+                        <md-option  value="39(991">39(991мм)</md-option>
+                        <md-option  value="42(1067">42(1067мм)</md-option>
+                        <md-option  value="44(1118">44(1118мм)</md-option>
+                        <md-option  value="48(1219">48(1219мм)</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+</form>

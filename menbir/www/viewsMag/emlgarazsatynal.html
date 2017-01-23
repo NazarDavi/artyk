@@ -1,0 +1,47 @@
+<form name="myForm">
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.gargor">
+                <ion-item>Garažyň Görnüşi
+                    <span class="item-note">{{ot.gargor}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Tutýan Meýdany (m<sup><small>2</small></sup>-da)
+                    <span class="item-note">{{ot.meydan}}m<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gorba">
+                <ion-item>Goragçy
+                    <span class="item-note">{{ot.gorba}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.gargor" ng-repeat="re in gargorRU | filter:{wariant:ot.gargor}">
+                <ion-item>Тип гаража
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Площадь (м<sup><small>2</small></sup>)
+                    <span class="item-note">{{ot.meydan}}м<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gorba=='Bar'">
+                <ion-item>Охрана
+                    <span class="item-note">Есть</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gorba=='Ýok'">
+                <ion-item>Охрана
+                    <span class="item-note">Нет</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

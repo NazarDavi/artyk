@@ -1,0 +1,138 @@
+<ion-view title="Hosme" id="page1" cache-view="false" >
+  <ion-nav-buttons side="right">
+
+    <select name="singleSelectTMRU" ng-change="jogapDiliTmRuSayla(diliTmRuSayla)"  ng-model="diliTmRuSayla" style="background-color: #22b6ea; color:black;border: 1px solid white;" >
+      <option value="TM">TM</option>
+      <option value="RU">RU</option>
+    </select>
+
+    <select name="singleSelect" ng-change="jogapPulBelligi(pulSaylaHomePage)"  ng-model="pulSaylaHomePage" style="background-color: #22b6ea; color:black;border: 1px solid white;" >
+      <option value="TMM">TMM</option>
+      <option value="TMT">TMT</option>
+      <option value="USA">$$$</option>
+    </select>
+    <!--<button class="button button-positive" ng-click="reset()">-->
+      <!--Refresh-->
+    <!--</button>-->
+  </ion-nav-buttons>
+
+
+
+  <ion-content padding="true" class="yzyHome">
+
+      <form class="lista">
+          <label class="item item-input gozlegknopkasy">
+            <i class="icon ion-search placeholder-icon" class="gozlegknopkasy"></i>
+              <div ng-show="diliTmRu=='TM'"><input type="search" placeholder="Gozleg:" ng-model="gozlemek"></div>
+              <div ng-show="diliTmRu=='RU'"><input type="search" placeholder="Поиск:" ng-model="gozlemek"></div>
+          </label>
+
+      <!--<label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+          <div ng-show="diliTmRu=='TM'"><input type="search" placeholder="ID Giriziň" ng-model="idsinigozlemek"></div>
+          <div ng-show="diliTmRu=='RU'"><input type="search" placeholder="Введите ID" ng-model="idsinigozlemek"></div>
+      </label>-->
+      <a ui-sref="menu.filter" class="filterHP button button-positive  icon ion-android-options"></a>
+      <a ui-sref="menu.gosmak" ng-if="userBazaCook" class="gosmakHP button button-positive  icon ion-plus-circled"></a>
+      <a ng-click="knopkagosmak($event)" ng-if="!userBazaCook" class="gosmakHP button button-positive  icon ion-plus-circled"></a>
+      <!--<a ui-sref="login" id="home-button18" class="button button-positive  icon ion-plus-menu"></a>-->
+      <div ng-if="userBazaCook"><a ng-if="userBazaCook.adminmi || userBazaCook.komadmin" class="gosmakHP button button-positive icon ion-clipboard" ng-click="yoklarygor()"></a></div>
+    </form>
+    <!--<div id="home-button-bar2" class="button-bar">-->
+      <!--<a ui-sref="menu.bolumler" id="home-button11" class="bolumlerHP button button-positive  button-block">Kategoriya</a>-->
+      <!--<a ui-sref="menu.welaAtlar" id="home-button12" class="yerinegoraSortHP button button-positive  button-block gozleyan-yeriniz">Gozleyan yeriniz</a>-->
+    <!--</div>-->
+
+      <!--<img src="img/reklam/rek1.gif"/>-->
+
+    <style>
+
+    </style>
+<!-- class="list form-tavar"-->
+    <form id="home-form4" class="homeForm">
+        <!--form-tavar-->
+        <div class="list bartawarlar" layout="column" ng-repeat="ob in news | orderBy:sortGora: reverse | filter:{tawarAdy:gozlemek} | filter:{id:idsinigozlemek} |
+        filter:{marka:katFilHome.marka,modl:katFilHome.modl}">
+
+
+            <!--<div ng-if="ob.yaraya===true"><button class="gownumeYaraya button button-assertive button-small button-outline icon ion-heart" ng-click="manaYaraya(ob.yaraya, ob.idSQL, ob, $event)"></button></div>-->
+            <!--<div ng-if="ob.yaraya=='false'"><button class="gownumeYaraya button button-positive button-small button-outline icon ion-ios-heart-outline" ng-click="manaYaraya(ob.yaraya, ob.idSQL, ob, $event)"></button></div>-->
+
+            <div ng-if="userBazaCook"><div ng-if="ob.tolemeli==='hawa' && (userBazaCook.adminmi || userBazaCook.komadmin)"><button class="tolenenBezeg button button-assertive button-small button-outline icon ion-close-circled" ng-click="tolenenBelle(ob.idSQL, ob, 'yok')"></button></div></div>
+            <div ng-if="userBazaCook"><div ng-if="ob.tolemeli=='yok' && (userBazaCook.adminmi || userBazaCook.komadmin)"><button class="tolenenBezeg button button-positive button-small button-outline icon ion-checkmark-circled" ng-click="tolenenBelle(ob.idSQL, ob, 'hawa')"></button></div></div>
+
+            <div class="image" ng-show="ob">
+                <a class="suratRamka" ui-sref="menu.bildiri" ng-click="maglumatUgratmak(ob.idSQL, ob.katUra2, ob.katUra3, ob.katUra4, ob.yaraya)">
+                    <div ng-hide="ob.glawImg || ob.img1"><img ng-src="img/noimg.png" width=150px" height=110px" class="suratHP"></div>
+                    <div ng-if="ob.glawImg"><img ng-src="http://a0109349.xsph.ru/img/surat_{{ob.glawImg}}" width=150px" height=110px" class="suratHP"></div>
+                    <div ng-if="ob.img1"><img ng-src="http://a0109349.xsph.ru/img/surat_{{ob.img1}}" width=150px" height=110px" class="suratHP"></div>
+                </a>
+            </div>
+            <div class="tawarAdy">{{ob.tawarAdy}}</div>
+            <div ng-show="diliTmRu=='TM'" class="bahasyname">{{ob.bahasyname}}</div>
+            <div ng-show="diliTmRu=='RU' && ob.bahasyname!='Bahasy'" class="bahasyname" ng-repeat="bahas in bahasynameRus | filter:{wariant: ob.bahasyname}">{{bahas.wariantRU}}</div>
+            <div ng-show="diliTmRu=='RU' && ob.bahasyname=='Bahasy'" class="bahasyname">Цена</div>
+
+            <div class="bahasy" ng-show="pulSaylaHomePageTMM">{{bahasyUyt(ob.bahasy, ob.pulBelligi) * 5000 | currency:"":0}}<trim ng-show="diliTmRu=='TM'"> manat</trim><trim ng-show="diliTmRu=='RU'"> манат</trim></div>
+            <div class="bahasy " ng-show="pulSaylaHomePageTMT">{{bahasyUyt(ob.bahasy, ob.pulBelligi) | currency:"":2}}<trim ng-show="diliTmRu=='TM'"> manat</trim><trim ng-show="diliTmRu=='RU'"> манат</trim></div>
+            <div class="bahasy " ng-show="pulSaylaHomePageUSA">{{bahasyUyt(ob.bahasy, ob.pulBelligi) / 3.5 | currency:"$":2}}</div>
+
+            <div ng-show="diliTmRu=='TM' && ob" class="yelesyeri">Ýeri: {{ob.welayat}} wel<trim ng-show="ob.etrap">, {{ob.etrap}} etr</trim><trim ng-show="ob.dayh">, {{ob.dayh}} d/b</trim></div>
+            <div ng-show="diliTmRu=='RU' && ob" class="yelesyeri">Место: <trim ng-if="ob" ng-if="ob.welayat" ng-repeat="wer in welayatlar | filter:{wariant: ob.welayat}">{{wer.wariantRU}} вел</trim><trim ng-if="ob" ng-if="ob.etrap" ng-repeat="etr in etraplar | filter:{wariant: ob.etrap, haysy:ob.welayat}">, {{etr.wariantRU}} этр</trim><trim ng-if="ob" ng-if="ob.dayh" ng-repeat="dar in dayhan | filter:{wariant: ob.dayh, haysy:ob.etrap}">, {{dar.wariantRU}} д/б</trim></div>
+
+            <div ng-show="diliTmRu=='TM' && ob" class="kataloglar">Katalog: {{ob.katUra1}}, {{ob.katUra2}}, {{ob.katUra3}}</div>
+            <div ng-show="diliTmRu=='RU' && ob" class="kataloglar">Каталог:
+                <trim ng-if="ob" ng-repeat="ku1r in katUra1Rus | filter:{wariant: ob.katUra1}">{{ku1r.wariantRU}}</trim><trim ng-if="ob" ng-repeat="ku2r in katUra2Rus | filter:{wariant: ob.katUra2, haysykat: ob.katUra1}">, {{ku2r.wariantRU}}</trim><trim ng-if="ob" ng-repeat="ku3r in katUra3Rus | filter:{wariant: ob.katUra3, haysykat: ob.katUra2}">, {{ku3r.wariantRU}}</trim></div>
+            <div ng-show="diliTmRu=='TM' && ob" class="wagty">{{ob.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+            <div ng-show="diliTmRu=='RU' && ob" class="wagty">{{ob.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+        </div>
+<!--Времья-->
+
+
+
+
+        <ion-infinite-scroll
+                ng-if="!noMoreItemsAvailable"
+                on-infinite="loadMore()"
+                distance="10%">
+        </ion-infinite-scroll>
+
+    </form>
+
+
+
+
+    <h1 ng-show="umumySQLQuery">Stranitsa BOOOOOOOOOOOOOOS</h1>
+    <!--<button ng-repeat="ob2 in obiav2" id="home-button6" style="font-weight:600;border-radius:50px 50px 50px 50px;" class="button button-positive  button-block icon-left ion-android-add-circle">{{ob2.tawaynAdy}}</button>-->
+  </ion-content>
+
+
+  <div>
+    <div class="lock-size" layout="row" layout-align="center center">
+      <md-fab-speed-dial md-open="isOpen" md-direction="up"
+                         class="md-fab-bottom-right"
+                         ng-class="{'md-fling':true, 'md-hover-full':true}"
+                         ng-mouseenter="true" ng-mouseleave="true">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab"><!--md-raised  md-wrap -->
+            <!--<md-icon class="material-icons">format_line_spacing</md-icon>-->
+            <md-icon class="material-icons"><img ng-src="img/filter.png" width=25px" height=30px" class="suratHPa"></md-icon>
+          </md-button>
+        </md-fab-trigger>
+<!--format line spacing /   attach money/ access time/arrow downward/ arrow upward-->
+        <md-fab-actions>
+          <md-button aria-label="Baha" class="md-fab md-mini"
+                     ng-click="sort('bahasy')">
+            <md-icon class="material-icons" aria-label="Baha"><img ng-src="img/{{sortBahaKnop}}.png" width=25px" height=25px" class="suratHP"></md-icon>
+          </md-button>
+          <md-button aria-label="Wagt" class="md-fab md-mini"
+                     ng-click="sort('wagty')">
+            <md-icon class="material-icons" aria-label="Wagt"><img ng-src="img/{{sortWagtKnop}}.png" width=25px" height=25px" class="suratHP"></md-icon>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
+    </div>
+
+
+  </div>
+</ion-view>

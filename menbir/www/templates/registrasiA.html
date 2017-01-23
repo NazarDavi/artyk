@@ -1,0 +1,86 @@
+<ion-view title="Registrasiýa" id="page5" style="background-color:#6E6E74;">
+  <ion-content padding="true" style="background: url(img/MJJXN7AT3GG8jPZvowuQ_nature_climate_9.jpg) no-repeat center;background-size:cover;" class="has-header">
+    <div class="spacer" style="width: 300px; height: 251px;"></div>
+    <form name="myForm" id="registrasiA-form7" class="list">
+      <ion-list id="registrasiA-list1">
+        <ion-item class="item-divider girelge-input1" id="registrasiA-list-item-divider1"> Registrasiýa kody!!!<div  ng-show="loginTazele">Beyle Login ba Tazelan</div></ion-item>
+
+
+        <!--<label class="item item-input girelge-input" id="registrasiA-input6">-->
+          <!--<span class="input-label">Name</span>-->
+          <!--<input type="text" placeholder="" ng-model="formInfo.name">-->
+        <!--</label>-->
+
+        <!--<label class="item item-input girelge-input" id="registrasiA-input3">-->
+          <!--<span class="input-label">Login</span>-->
+          <!--<input type="text" name="login" placeholder="" ng-model="formInfo.login"  pattern="[A-Za-z0-9]{1,}">-->
+        <!--</label>-->
+
+
+        <!--<div class="errors" ng-messages="myForm.login.$error">-->
+          <!--<div ng-message="pattern">Iňlis harplary</div>-->
+        <!--</div>-->
+
+        <!--<label class="item item-input girelge-input" id="registrasiA-input5">-->
+          <!--<span class="input-label">Parol</span>-->
+          <!--<input type="password" placeholder="" ng-model="formInfo.pass">-->
+        <!--</label>-->
+      <!--</ion-list>&lt;!&ndash;ui-sref="menu.home"&ndash;&gt;-->
+
+        <div layout="column" layout-align="center" flex>
+          <md-input-container class="knopka">
+            <label>Adyňyz</label>
+            <input type="name" pattern="[A-Za-z0-9]{1,30}" name="passEr" ng-model="formInfo.name" required minlength='5' md-maxlength="20"/>
+            <div ng-messages="myForm.passEr.$error" ng-show="myForm.passEr.$dirty" multiple md-auto-hide="false">
+              <div ng-message="required">
+                Обязательно заполнить!
+              </div>
+              <div ng-message="pattern">
+                Русские буквы нельзя!
+              </div>
+              <div ng-message="minlength">Мало не пишите!</div>
+              <div ng-message="md-maxlength">Много не пишите!</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="column" layout-align="center" flex>
+          <md-input-container class="knopka">
+            <label>Login</label>
+            <input type="name" pattern="[A-Za-z0-9]{1,30}" name="passEr" ng-model="formInfo.login" required minlength='6' md-maxlength="20"/>
+            <div ng-messages="myForm.passEr.$error" ng-show="myForm.passEr.$dirty" multiple md-auto-hide="false">
+              <div ng-message="required">
+                Обязательно заполнить!
+              </div>
+              <div ng-message="pattern">
+                Русские буквы нельзя!
+              </div>
+              <div ng-message="minlength">Мало не пишите!</div>
+              <div ng-message="md-maxlength">Много не пишите!</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="column" layout-align="center" flex>
+          <md-input-container class="knopka">
+            <label>Parol</label>
+            <input type="password" pattern="[A-Za-z0-9]{1,30}" name="passEr" ng-model="formInfo.pass" required minlength='6' md-maxlength="20"/>
+            <div ng-messages="myForm.passEr.$error" ng-show="myForm.passEr.$dirty" multiple md-auto-hide="false">
+              <div ng-message="required">
+                Обязательно заполнить!
+              </div>
+              <div ng-message="pattern">
+                Русские буквы нельзя!
+              </div>
+              <div ng-message="minlength">Мало не пишите!</div>
+              <div ng-message="md-maxlength">Много не пишите!</div>
+            </div>
+          </md-input-container>
+        </div>
+
+
+
+      <a id="registrasiA-button7" class="button button-stable  button-block" ng-click="ugratmak(formInfo)">Registrasiýa</a>
+        <md-button style="border-radius:10px 10px 10px 10px;" class="button button-stable  button-block" ui-sref="menu.home">Yza Dolan</md-button>
+
+    </form>
+  </ion-content>
+</ion-view>

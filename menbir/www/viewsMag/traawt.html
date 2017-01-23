@@ -1,0 +1,154 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.markaAdy">
+                <ion-item>Marka
+                    <span class="item-note">{{ot.markaAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.modlAdy">
+                <ion-item>Modeli
+                    <span class="item-note">{{ot.modlAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.yyly">
+                <ion-item>Çykan ýyly
+                    <span class="item-note">{{ot.yyly}} ýyl</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gecenYoly">
+                <ion-item>Geçen yoly
+                    <span class="item-note">{{ot.gecenYoly}} km</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.kakylan">
+                <ion-item>Maşynyň Ýagdaýy
+                    <span class="item-note">{{ot.kakylan}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.kuzow">
+                <ion-item>Kuzowyň Görnüşi
+                    <span class="item-note">{{ot.kuzow}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gapysany">
+                <ion-item>Gapysynyň Sany
+                    <span class="item-note">{{ot.gapysany}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.dwiGornusi">
+                <ion-item>Dwigateliň Görnüşi
+                    <span class="item-note">{{ot.dwiGornusi}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.dguyji">
+                <ion-item>Dwigateliň Göwrümi
+                    <span class="item-note">{{ot.dguyji}} litir</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.karPereda">
+                <ion-item>Karobka Peredaça
+                    <span class="item-note">{{ot.karPereda}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.cekijilig">
+                <ion-item>Çekijiligi
+                    <span class="item-note">{{ot.cekijilig}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.renk" ng-repeat="re in renkCSS | filter:{wariant:ot.renk}">
+                <ion-item>Reňki
+                    <span class="item-note"><md-icon style="width: 50px; background-color: {{re.warcss}}"></md-icon><trim>  </trim>{{re.wariant}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.alysCalys==2">
+                <ion-item>Alyş-Çalyş
+                    <span class="item-note">Mümkin</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.garasykly==2">
+                <ion-item>Garaşykly
+                    <span class="item-note">Mümkin</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.markaAdy">
+                <ion-item>Марка
+                    <span class="item-note">{{ot.markaAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.modlAdy">
+                <ion-item>Модель
+                    <span class="item-note">{{ot.modlAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.yyly">
+                <ion-item>Год выпуска
+                    <span class="item-note">{{ot.yyly}} год</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gecenYoly">
+                <ion-item>Пробег
+                    <span class="item-note">{{ot.gecenYoly}} км</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.kakylan" ng-repeat="re in kakylanRU | filter:{wariant:ot.kakylan}">
+                <ion-item>Состояние
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.kuzow" ng-repeat="re in kuzowRU | filter:{wariant:ot.kuzow}">
+                <ion-item>Тип кузова
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gapysany">
+                <ion-item>Количество дверей
+                    <span class="item-note">{{ot.gapysany}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.dwiGornusi" ng-repeat="re in dwiGornusiRU | filter:{wariant:ot.dwiGornusi}">
+                <ion-item>Тип двигателя
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.dguyji">
+                <ion-item>Мощность двигателя
+                    <span class="item-note">{{ot.dguyji}} литр</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.karPereda" ng-repeat="re in karPeredaRU | filter:{wariant:ot.karPereda}">
+                <ion-item>Коробка передач
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.cekijilig" ng-repeat="re in cekijiligRU | filter:{wariant:ot.cekijilig}">
+                <ion-item>Привод
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.renk" ng-repeat="re in renkCSS | filter:{wariant:ot.renk}">
+                <ion-item>Цвет
+                    <span class="item-note"><md-icon style="width: 50px; background-color: {{re.warcss}}"></md-icon><trim>  </trim>{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.alysCalys==2">
+                <ion-item>Обен
+                    <span class="item-note">Может</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.garasykly==2">
+                <ion-item>В кредить
+                    <span class="item-note">Может</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+
+</form>

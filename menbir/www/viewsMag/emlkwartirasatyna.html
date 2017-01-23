@@ -1,0 +1,62 @@
+<form name="myForm">
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.komsan">
+                <ion-item>Komnat Sany
+                    <span class="item-note">{{ot.komsan}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.stenmat">
+                <ion-item>Stenaň Materialy
+                    <span class="item-note">{{ot.stenmat}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.etaz">
+                <ion-item>Ýerleşýän Etažy
+                    <span class="item-note">{{ot.etaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jemetaz">
+                <ion-item>Jemi Etaž Sany
+                    <span class="item-note">{{ot.jemetaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Meýdany (m<sup><small>2</small></sup>-da)
+                    <span class="item-note">{{ot.meydan}} m<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.komsan">
+                <ion-item>Количество комнат
+                    <span class="item-note">{{ot.komsan}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.stenmat" ng-repeat="re in stenmatRU | filter:{wariant:ot.stenmat}">
+                <ion-item>Матераль стены
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.etaz">
+                <ion-item>Этаж
+                    <span class="item-note">{{ot.etaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jemetaz">
+                <ion-item>Этажей в доме
+                    <span class="item-note">{{ot.jemetaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Площадь (м<sup><small>2</small></sup>)
+                    <span class="item-note">{{ot.meydan}} м<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

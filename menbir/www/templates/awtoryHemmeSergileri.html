@@ -1,0 +1,27 @@
+<ion-view title="Awtoryň hemme sergileri">
+  <ion-content padding="true" class="has-header">
+    <form class="list form-tavar">
+      <div ng-repeat="ob in menTawarlam">
+
+        <!--<div ng-if="ob.yaraya==='false'"><button id="home-button1" class="gownumeYaraya button button-positive button-small button-outline icon ion-trash-a" ng-click="bazadanPozmak(ob.yaraya, ob.keyT, ob)"></button></div>-->
+        <!--<div ng-if="ob.yaraya==='false'"><button id="home-button2" class="gownumeYaraya button button-positive button-small button-outline icon ion-edit" ng-click="bazadanPozmak2(ob.yaraya, ob.keyT, ob)"></button></div>-->
+
+        <div class="image">
+          <a class="suratRamka" ui-sref="menu.bildiri" ng-click="maglumatUgratmak(ob.keyT, ob.katUra2, ob.katUra3, ob.katUra4, ob.yaraya)">
+            <!--<img ng-src="http://a0107369.xsph.ru/img/surat_{{ob.glawImg}}" width=100%" height=200px" class="suratHP">-->
+            <img ng-src="img/noimg.png" width=100%" height=200px" class="suratHP">
+          </a>
+        </div>
+        <h5 class="baha-taze" ng-show="pulSaylaHomePageTMM">{{bahasyUyt(ob.bahasy, ob.pulBelligi) * 5000 | currency:"":0}} manat</h5>
+        <h5 class="baha-taze" ng-show="pulSaylaHomePageTMT">{{bahasyUyt(ob.bahasy, ob.pulBelligi) | currency:"":2}} manat</h5>
+        <h5 class="baha-taze" ng-show="pulSaylaHomePageUSA">{{bahasyUyt(ob.bahasy, ob.pulBelligi) / 3.5 | currency:"$":2}}</h5>
+        <h4 class="">{{ob.tawarAdy}}</h4>
+        <h5 class="">Ýeri: {{ob.welayat}} <trim ng-show="ob.etrap">, {{ob.etrap}}</trim><trim ng-show="ob.dayh">, {{ob.dayh}}</trim>   </h5> <!--<p ng-show="ob.etrap">, {{ob.etrap}}</p><div ng-show="ob.dayh">, {{ob.dayh}}</div></h5>-->
+        <!--<h3 id="home-heading5" class="adyObHP2">{{ob.tawarAdy}}</h3>-->
+        <!--<h5 id="home-heading45" class="adyObHP3">Marka: {{ob.markaAdy}}, {{ob.modlAdy}}</h5>-->
+        <h5 class="goyulanKategoriasyHP">Katalog: {{ob.katUra1}}, {{ob.katUra2}}, {{ob.katUra3}}</h5>
+        <h5 class="goyulanWagtyHP">Wagty: {{ob.wagty | date : 'dd-MM-yyyy, HH:mm'}}</h5>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

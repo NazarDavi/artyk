@@ -1,0 +1,287 @@
+<form name="myForm">
+
+    <div ng-if="diliTmRu=='TM'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Welaýatlar</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Ertaplar</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Dayhan Birlesik (Geňeşlik, Oba)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariant}}({{dayh.konewariant}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Bildirişiň ady</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Hökman doldurmaly!
+                    </div>
+                    <div ng-message="minlength">Az ýazmaň!</div>
+                    <div ng-message="md-maxlength">Köp ýazmaň!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Maglumat</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Goşmaça maglumatlary girizip bilersiňiz:
+            Telefon nomeriňizi belläň!!!
+            Jaň etmeli wagtyny anyklaň."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Bahasy</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Bahasyny görkeziň!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Pul Belligi</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Köne Manat (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Täze Manat (TMT)</em></md-option>
+                    <md-option value="$"><em>Dollar ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Hokman saylamaly!</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!--Surat-->
+        <div class="md-body-2">Ýüklenmeli Surat (Max 10 surat) </div>
+        <div layout="column" layout-align="center center">
+            <img ng-src="{{pathForImage(image)}}" class="esasySurat">
+            <div layout="row">
+                <md-button ng-disabled="suratsany>11" class="suratTAWButton2 button md-raised md-primary icon-left ion-camera">Belle</md-button>
+                <md-button ng-disabled="suratsany>11" class="suratTAWButton2 button md-raised md-primary icon-left ion-upload">Ýükle</md-button>
+            </div>
+            <!--<button class="button icon-left ion-camera" ng-click="loadImage()">Take Photo</button>-->
+            <!--<button class="button icon-left ion-upload" ng-click="uploadImage()" ng-disabled="image === null">Upload</button>-->
+        </div>
+        <div class="md-body-2" ng-show="formInfo.img1||formInfo.img2||formInfo.img3||formInfo.img4||formInfo.img5||formInfo.img6||formInfo.img7||formInfo.img8|| formInfo.img9||formInfo.img10">Ýüklenen Suratlar (Bellän Suratlaryňyz)</div>
+        <div layout="row" class="suratTAWaa">
+            <div class="suratTAWa" ng-show="formInfo.img1">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img1}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img1)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img2">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img2}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img2)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img3">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img3}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img3)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img4">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img4}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img4)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img5">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img5}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img5)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img6">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img6}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img6)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img7">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img7}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img7)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img8">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img8}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img8)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img9">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img9}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img9)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img10">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img10}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img10)">Pozmak</md-button>
+            </div>
+        </div>
+
+
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Doldurulmadyk ýer galdy!!! ("*" ba ýerlerini)</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Ugratmak</md-button>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Велаят</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Этрап</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Дайхан Бирлешик (Генгешлик, Село)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariantRU}}({{dayh.konewariantRU}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Называние объявления</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Обязательно заполнить!
+                    </div>
+                    <div ng-message="minlength">Мало не пишите!</div>
+                    <div ng-message="md-maxlength">Много не пишите!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Описание объявления</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Можете написать доп. информацию:
+            Обязательно укажите номер телефона!!!
+            Укажите времья звонка."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Цена</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Укажите цену!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Знак валюты</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Старый Манат (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Новый Манат (TMT)</em></md-option>
+                    <md-option value="$"><em>Доллар ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Обязательно выбрать!</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!--Surat-->
+        <div class="md-body-2">Выбранная фотография (Максимум 10 фото) </div>
+        <div layout="column" layout-align="center center">
+            <img ng-src="{{pathForImage(image)}}" class="esasySurat">
+            <div layout="row">
+                <md-button ng-disabled="suratsany>11" class="suratTAWButton2 button md-raised md-primary icon-left ion-camera">Belle</md-button>
+                <md-button ng-disabled="suratsany>11" class="suratTAWButton2 button md-raised md-primary icon-left ion-upload">Ýükle</md-button>
+            </div>
+            <!--<button class="button icon-left ion-camera" ng-click="loadImage()">Take Photo</button>-->
+            <!--<button class="button icon-left ion-upload" ng-click="uploadImage()" ng-disabled="image === null">Upload</button>-->
+        </div>
+        <div class="md-body-2" ng-show="formInfo.img1||formInfo.img2||formInfo.img3||formInfo.img4||formInfo.img5||formInfo.img6||formInfo.img7||formInfo.img8|| formInfo.img9||formInfo.img10">Загруженные фотографии (Все фото)</div>
+        <div layout="row" class="suratTAWaa">
+            <div class="suratTAWa" ng-show="formInfo.img1">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img1}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img1)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img2">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img2}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img2)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img3">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img3}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img3)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img4">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img4}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img4)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img5">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img5}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img5)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img6">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img6}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img6)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img7">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img7}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img7)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img8">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img8}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img8)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img9">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img9}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img9)">Pozmak</md-button>
+            </div>
+            <div class="suratTAWa" ng-show="formInfo.img10">
+                <img ng-src="http://a0109349.xsph.ru/img/surat_{{formInfo.img10}}" class="suratTAW">
+                <md-button class="suratTAWButton md-raised md-warn button icon-left ion-trash-a" ng-click="deletImage(formInfo.img10)">Pozmak</md-button>
+            </div>
+        </div>
+
+
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Надо все заполнить!!! (Там где есть "*")</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Отправить</md-button>
+        </div>
+    </div>
+
+</form>

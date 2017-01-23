@@ -1,0 +1,73 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Markasy-->
+        <div layout="row" layout-align="center" flex ng-show="masynUcinMi">
+            <md-input-container>
+                <label>Marka</label>
+                <md-select ng-change="showSelectValue(formFilterKatalog.marka)" name="MarkaError" ng-model="formFilterKatalog.marka">
+                    <md-option ng-repeat="marka in markalar | orderBy :'value'" value="{{marka.value}}">
+                        <trim ng-if="marka.value<104"><img class="markaeml" ng-src="img/marka/{{marka.value}}.png" style=" width:50px; height:30px"> {{marka.name}}</trim>
+                        <trim ng-if="marka.value>104">{{marka.name}}</trim>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Wariantlar Zapcastlaryn-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container>
+                <label>Görnüşi</label>
+                <md-select  ng-model="formFilterKatalog.gornusi">
+                    <md-option  value="Çyra"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Çyra</md-option>
+                    <md-option  value="Asma(Podweska)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Asma(Podweska)</md-option>
+                    <md-option  value="Gulşitel"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Gulşitel</md-option>
+                    <md-option  value="Akkumulýatorlar"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Akkumulýatorlar</md-option>
+                    <md-option  value="Rol dolandyryşy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Rol Dolandyryşy</md-option>
+                    <md-option  value="Tormoz Ulgamy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Tormoz Ulgamy</md-option>
+                    <md-option  value="Dwigatel(Hereketlendiriji)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Dwigatel(Hereketlendiriji)</md-option>
+                    <md-option  value="Salon"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Salon</md-option>
+                    <md-option  value="Transmissiýa we Priwod(Herekede getiriji)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Transmissiýa we Priwod</md-option>
+                    <md-option  value="Sowadyş Sistemasy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Sowadyş Sistemasy</md-option>
+                    <md-option  value="Elektrik Enjamlary(Abzallary)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Elektrik Enjamlary(Abzallary)</md-option>
+                    <md-option  value="Kuzowy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Kuzowy</md-option>
+                    <md-option  value="Aýna"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Aýna</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Markasy-->
+        <div layout="row" layout-align="center" flex ng-show="masynUcinMi">
+            <md-input-container>
+                <label>Марка</label>
+                <md-select ng-change="showSelectValue(formFilterKatalog.marka)" name="MarkaError" ng-model="formFilterKatalog.marka">
+                    <md-option ng-repeat="marka in markalar | orderBy :'value'" value="{{marka.value}}">
+                        <trim ng-if="marka.value<104"><img class="markaeml" ng-src="img/marka/{{marka.value}}.png" style=" width:50px; height:30px"> {{marka.name}}</trim>
+                        <trim ng-if="marka.value>104">{{marka.name}}</trim>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Wariantlar Zapcastlaryn-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container>
+                <label>Виды</label>
+                <md-select  ng-model="formFilterKatalog.gornusi">
+                    <md-option  value="Çyra"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Автосвет</md-option>
+                    <md-option  value="Asma(Podweska)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Подвеска</md-option>
+                    <md-option  value="Gulşitel"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Топливная и выхлопная системы</md-option>
+                    <md-option  value="Akkumulýatorlar"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Аккумуляторы</md-option>
+                    <md-option  value="Rol dolandyryşy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Рулевое управление</md-option>
+                    <md-option  value="Tormoz Ulgamy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Тормозная система</md-option>
+                    <md-option  value="Dwigatel(Hereketlendiriji)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Двигатель</md-option>
+                    <md-option  value="Salon"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Салон</md-option>
+                    <md-option  value="Transmissiýa we Priwod(Herekede getiriji)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Трансмиссия и привод</md-option>
+                    <md-option  value="Sowadyş Sistemasy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Система охлаждения</md-option>
+                    <md-option  value="Elektrik Enjamlary(Abzallary)"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Электрооборудование</md-option>
+                    <md-option  value="Kuzowy"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Кузов</md-option>
+                    <md-option  value="Aýna"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Стекла</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+</form>

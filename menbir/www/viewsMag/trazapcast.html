@@ -1,0 +1,139 @@
+<form name="myForm">
+
+    <div ng-show="ot.nameMasynUcin">
+        <div ng-show="diliTmRu=='TM'">
+            <ion-list>
+                <div ng-show="ot.markaAdy">
+                    <ion-item>Marka
+                        <span class="item-note">{{ot.markaAdy}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.gornusi">
+                    <ion-item>Görnüşi
+                        <span class="item-note">{{ot.gornusi}}</span>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+
+        <div ng-show="diliTmRu=='RU'">
+            <ion-list>
+                <div ng-show="ot.markaAdy">
+                    <ion-item>Марка
+                        <span class="item-note">{{ot.markaAdy}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.gornusi" ng-repeat="re in gornusiRU | filter:{wariant:ot.gornusi}">
+                    <ion-item>Виды
+                        <span class="item-note">{{re.wariantRU}}</span>
+                    </ion-item>
+                </div>
+
+            </ion-list>
+        </div>
+    </div>
+
+    <div ng-show="ot.tekerinBolumi">
+        <div ng-show="diliTmRu=='TM'">
+            <ion-list>
+                <div ng-show="ot.tekDia">
+                    <ion-item>Diametr (Tekeriň beýikligi)
+                        <span class="item-note">{{ot.tekDia}}mm)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekBey">
+                    <ion-item>Beýikligi(Diskden Ýokary)
+                        <span class="item-note">{{ot.tekBey}}mm</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekIni">
+                    <ion-item>Ini(mm-da)
+                        <span class="item-note">{{ot.tekIni}}mm</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekPasyl">
+                    <ion-item>Pasyly
+                        <span class="item-note">{{ot.tekPasyl}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekOs">
+                    <ion-item>Özen(Os,Merkez)
+                        <span class="item-note">{{ot.tekOs}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskDia">
+                    <ion-item>Diametr(Dýuýmda)
+                        <span class="item-note">{{ot.diskDia}}mm)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskIni">
+                    <ion-item>Ini(Dýuýmda)
+                        <span class="item-note">{{ot.diskIni}}mm)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskSany">
+                    <ion-item>Deşik sany(Berklemek üçin)
+                        <span class="item-note">{{ot.diskSany}}</span>
+                    </ion-item>
+                </div>
+
+                <div ng-show="ot.kalpakDia">
+                    <ion-item>Diametr(Dýuýmda)
+                        <span class="item-note">{{ot.kalpakDia}}mm)</span>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+
+        <div ng-show="diliTmRu=='RU'">
+            <ion-list>
+                <div ng-show="ot.tekDia">
+                    <ion-item>Диаметр (Высота шины)
+                        <span class="item-note">{{ot.tekDia}}мм)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekBey">
+                    <ion-item>Высота профиля
+                        <span class="item-note">{{ot.tekBey}}мм</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekIni">
+                    <ion-item>Ширина профиля(мм)
+                        <span class="item-note">{{ot.tekIni}}мм</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekPasyl" ng-repeat="re in tekPasylRU | filter:{wariant:ot.tekPasyl}">
+                    <ion-item>Сезонность
+                        <span class="item-note">{{re.wariantRU}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.tekOs" ng-repeat="re in tekOsRU | filter:{wariant:ot.tekOs}">
+                    <ion-item>Ось
+                        <span class="item-note">{{re.wariantRU}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskDia">
+                    <ion-item>Диаметр
+                        <span class="item-note">{{ot.diskDia}}мм)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskIni">
+                    <ion-item>Ширина обода
+                        <span class="item-note">{{ot.diskIni}}мм)</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.diskSany">
+                    <ion-item>Количество отверстий
+                        <span class="item-note">{{ot.diskSany}}</span>
+                    </ion-item>
+                </div>
+                <div ng-show="ot.kalpakDia">
+                    <ion-item>Диаметр
+                        <span class="item-note">{{ot.kalpakDia}}мм)</span>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+    </div>
+
+</form>

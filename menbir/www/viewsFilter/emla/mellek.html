@@ -1,0 +1,53 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Mellek Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block" flex="50">
+                <label>Mellek Meýdany (m<sup><small>2</small></sup>-da)</label>
+                <input type="number" step="1" name="meydan" ng-model="formFilterKatalog.meydan" min="10"
+                       max="10000000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Min 10m<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Max 10000000m<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+            <!--Şähere Çenli Aralyk-->
+            <md-input-container flex="50">
+                <label>Şähere Çenli Aralyk</label>
+                <md-select  ng-model="formFilterKatalog.jemetaz">
+                    <md-option ng-repeat="ara in aralykshaher"  value="{{ara}}">{{ara}}km</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Mellek Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block" flex="50">
+                <label>Площадь (м<sup><small>2</small></sup>)</label>
+                <input type="number" step="1" name="meydan" ng-model="formFilterKatalog.meydan" min="10"
+                       max="10000000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Мин 10м<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Макс 10000000м<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+            <!--Şähere Çenli Aralyk-->
+            <md-input-container flex="50">
+                <label>Расстояние до города</label>
+                <md-select  ng-model="formFilterKatalog.jemetaz">
+                    <md-option ng-repeat="ara in aralykshaher"  value="{{ara}}">{{ara}}km</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+</form>

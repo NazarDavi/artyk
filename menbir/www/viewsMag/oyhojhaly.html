@@ -1,0 +1,23 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.olcegiDan">
+                <ion-item>Ölçegi (sm-da). (Ini sm x Beýik sm)
+                    <span class="item-note">{{ot.olcegiDan}}sm<trim> x </trim>{{ot.olcegiCen}}sm</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.olcegiDan">
+                <ion-item>Резмер (см). (Ширина см x Высота см)
+                    <span class="item-note">{{ot.olcegiDan}}см<trim> x </trim>{{ot.olcegiCen}}см</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

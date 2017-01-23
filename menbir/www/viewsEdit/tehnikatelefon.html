@@ -1,0 +1,52 @@
+
+
+    <div layout="row">
+        <md-input-container>
+            <label>Telefonyň Markasy</label>
+            <md-select name="TelBelligiErroe" ng-model="formInfo.markaTel" required>
+                <md-option value="Acer">Acer</md-option>
+                <md-option value="Alcatel">Alcatel</md-option>
+                <md-option value="ASUS">ASUS</md-option>
+                <md-option value="Blackberry">Blackberry</md-option>
+                <md-option value="BQ">BQ</md-option>
+                <md-option value="DEXP">DEXP</md-option>
+                <md-option value="Explay">Explay</md-option>
+                <md-option value="Fly">Fly</md-option>
+                <md-option value="Highscreen">Highscreen</md-option>
+                <md-option value="HTC">HTC</md-option>
+                <md-option value="Huawei">Huawei</md-option>
+                <md-option value="iPhone">iPhone</md-option>
+                <md-option value="Lenovo">Lenovo</md-option>
+                <md-option value="LG">LG</md-option>
+                <md-option value="Meizu">Meizu</md-option>
+                <md-option value="Micromax">Micromax</md-option>
+                <md-option value="Microsoft">Microsoft</md-option>
+                <md-option value="Motorola">Motorola</md-option>
+                <md-option value="MTS">MTS</md-option>
+                <md-option value="Nokia">Nokia</md-option>
+                <md-option value="Panasonic">Panasonic</md-option>
+                <md-option value="Philips">Philips</md-option>
+                <md-option value="Prestigio">Prestigio</md-option>
+                <md-option value="Samsung">Samsung</md-option>
+                <md-option value="Siemens">Siemens</md-option>
+                <md-option value="SkyLink">SkyLink</md-option>
+                <md-option value="Sony">Sony</md-option>
+                <md-option value="teXet">teXet</md-option>
+                <md-option value="Vertu">Vertu</md-option>
+                <md-option value="Xiaomi">Xiaomi</md-option>
+                <md-option value="ZTE">ZTE</md-option>
+                <md-option value="Başga">Başga...</md-option>
+            </md-select>
+            <div class="errors" ng-messages="myForm.TelBelligiErroe.$error">
+                <div ng-message="required">Hokman saylamaly!</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <!--Modeli ady-->
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="50">
+        <label>Markaň Modeli?</label>
+        <input type="text" ng-model="maglumatlar.modelTel"  minlength='0' md-maxlength="20"/>
+        </md-input-container>
+    </div>

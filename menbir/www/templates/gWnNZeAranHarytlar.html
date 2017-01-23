@@ -1,0 +1,39 @@
+<ion-view title="Göwnünüze ýaran harytlar" id="page12" cache-view="false">
+  <ion-content padding="true" class="has-header">
+    <form class="homeForm">
+        <div class="list bartawarlar" layout="column" ng-repeat="ob in menTawarlam">
+
+          <button class="gownumeYaraya button button-assertive button-small button-outline icon ion-heart" ng-click="manaYaraya(ob.yaraya, ob.keyT, ob)"></button>
+
+          <div class="image" ng-show="ob">
+            <a class="suratRamka" ui-sref="menu.bildiri" ng-click="maglumatUgratmak(ob.idSQL, ob.katUra2, ob.katUra3, ob.katUra4, ob.yaraya)">
+              <div ng-hide="ob.glawImg || ob.img1"><img ng-src="img/noimg.png" width=150px" height=110px" class="suratHP"></div>
+              <div ng-if="ob.glawImg"><img ng-src="http://a0109349.xsph.ru/img/surat_{{ob.glawImg}}" width=150px" height=110px" class="suratHP"></div>
+              <div ng-if="ob.img1"><img ng-src="http://a0109349.xsph.ru/img/surat_{{ob.img1}}" width=150px" height=110px" class="suratHP"></div>
+            </a>
+          </div>
+
+          <div class="tawarAdy ">{{ob.tawarAdy}}</div>
+          <div ng-show="diliTmRu=='TM'" class="bahasyname">{{ob.bahasyname}}</div>
+          <div ng-show="diliTmRu=='RU' && ob.bahasyname!='Bahasy'" class="bahasyname" ng-repeat="bahas in bahasynameRus | filter:{wariant: ob.bahasyname}">{{bahas.wariantRU}}</div>
+          <div ng-show="diliTmRu=='RU' && ob.bahasyname=='Bahasy'" class="bahasyname">Цена</div>
+
+          <div class="bahasy" ng-show="pulSaylaHomePageTMM">{{bahasyUyt(ob.bahasy, ob.pulBelligi) * 5000 | currency:"":0}}<trim ng-show="diliTmRu=='TM'"> manat</trim><trim ng-show="diliTmRu=='RU'"> манат</trim></div>
+          <div class="bahasy " ng-show="pulSaylaHomePageTMT">{{bahasyUyt(ob.bahasy, ob.pulBelligi) | currency:"":2}}<trim ng-show="diliTmRu=='TM'"> manat</trim><trim ng-show="diliTmRu=='RU'"> манат</trim></div>
+          <div class="bahasy " ng-show="pulSaylaHomePageUSA">{{bahasyUyt(ob.bahasy, ob.pulBelligi) / 3.5 | currency:"$":2}}</div>
+
+          <div ng-show="diliTmRu=='TM' && ob" class="yelesyeri">Ýeri: {{ob.welayat}}<trim ng-show="ob.etrap">, {{ob.etrap}}</trim><trim ng-show="ob.dayh">, {{ob.dayh}}</trim></div>
+          <div ng-show="diliTmRu=='RU' && ob" class="yelesyeri">Место:
+            <trim ng-if="ob" ng-repeat="wer in welayatlar | filter:{wariant: ob.welayat}">{{wer.wariantRU}}</trim>
+            <trim ng-if="ob" ng-show="ob.etrap" ng-repeat="etr in etraplar | filter:{wariant: ob.etrap}">, {{etr.wariantRU}}</trim>
+            <trim ng-if="ob" ng-show="ob.dayh" ng-repeat="dar in dayhan | filter:{wariant: ob.dayh}">, {{dar.wariantRU}}</trim></div>
+          <div ng-show="diliTmRu=='TM' && ob" class="kataloglar">Katalog: {{ob.katUra1}}, {{ob.katUra2}}, {{ob.katUra3}}</div>
+          <div ng-show="diliTmRu=='RU' && ob" class="kataloglar">Каталог:
+            <trim ng-if="ob" ng-repeat="ku1r in katUra1Rus | filter:{wariant: ob.katUra1}">{{ku1r.wariantRU}}</trim><trim ng-if="ob" ng-repeat="ku2r in katUra2Rus | filter:{wariant: ob.katUra2, haysykat: ob.katUra1}">, {{ku2r.wariantRU}}</trim><trim ng-if="ob" ng-repeat="ku3r in katUra3Rus | filter:{wariant: ob.katUra3, haysykat: ob.katUra2}">, {{ku3r.wariantRU}}</trim></div>
+          <div ng-show="diliTmRu=='TM' && ob" class="wagty">{{ob.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+          <div ng-show="diliTmRu=='RU' && ob" class="wagty">{{ob.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+
+        </div>
+    </form>
+  </ion-content>
+</ion-view>

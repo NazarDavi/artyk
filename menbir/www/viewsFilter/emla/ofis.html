@@ -1,0 +1,39 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Tutýan Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Tutýan Meýdany (m<sup><small>2</small></sup>-da)</label>
+                <input type="number" name="meydan" ng-model="formFilterKatalog.meydan" min="0"
+                       max="10000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Min 0m<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Max 10000m<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Tutýan Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Площадь (в м<sup><small>2</small></sup>)</label>
+                <input type="number" name="meydan" ng-model="formFilterKatalog.meydan" min="0"
+                       max="10000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Мин 0м<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Макс 10000м<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+</form>

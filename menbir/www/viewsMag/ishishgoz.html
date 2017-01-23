@@ -1,0 +1,78 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.ishWagty">
+                <ion-item>Iş Wagty
+                    <span class="item-note">{{ot.ishWagty}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishGrafik">
+                <ion-item>Iş Grafikasy
+                    <span class="item-note">{{ot.ishGrafik}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishTejribe">
+                <ion-item>Iş Tejribesi
+                    <span class="item-note">{{ot.ishTejribe}}ýyl</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishBilim">
+                <ion-item>Bilim
+                    <span class="item-note">{{ot.ishBilim}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jynsy">
+                <ion-item>Jynsy
+                    <span class="item-note">{{ot.jynsy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.yash">
+                <ion-item>Ýaşy
+                    <span class="item-note">{{ot.yash}}ýyl</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.ishWagty" ng-repeat="re in ishWagtyRU | filter:{wariant:ot.ishWagty}">
+                <ion-item>Время работы
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishGrafik" ng-repeat="re in ishGrafikRU | filter:{wariant:ot.ishGrafik}">
+                <ion-item>График работы
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishTejribe">
+                <ion-item>Опыт работы
+                    <span class="item-note">{{ot.ishTejribe}} лет</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.ishBilim" ng-repeat="re in ishBilimRU | filter:{wariant:ot.ishBilim}">
+                <ion-item>Образование
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jynsy=='Erkek'">
+                <ion-item>Пол
+                    <span class="item-note">Мужской</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jynsy=='Aýal'">
+                <ion-item>Пол
+                    <span class="item-note">Женский</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.yash">
+                <ion-item>Возраст
+                    <span class="item-note">{{ot.yash}}лет</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

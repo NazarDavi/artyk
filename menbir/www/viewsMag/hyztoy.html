@@ -1,0 +1,23 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.orunsany">
+                <ion-item>Jemi oryn sany
+                    <span class="item-note">{{ot.orunsany}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.orunsany">
+                <ion-item>Общее место
+                    <span class="item-note">{{ot.orunsany}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+</form>

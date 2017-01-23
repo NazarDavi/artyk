@@ -1,0 +1,64 @@
+<ion-view title="Login" hide-nav-bar="true" id="page4">
+  <ion-content padding="true" style="background: url(img/girelge.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding">
+    <form name="myForm">
+      <h1 id="login-heading2" style="color:#043E4D;font-weight:600;text-align:center;">Hoş Geldiniz!</h1>
+
+      <div class="spacer" style="width: 300px; height: 150px;"></div>
+      <!--<label class="item item-input girelge-input">-->
+        <!--<span class="input-label">Login</span>-->
+        <!--<input type="text" name="loginEr" placeholder="" ng-model="formInfo.login">-->
+      <!--</label>-->
+
+      <div layout="column" layout-align="center" flex>
+        <md-input-container class="knopka">
+          <label>Login</label>
+          <input type="text" pattern="[A-Za-z0-9]{1,30}" name="loginEr" ng-model="formInfo.login" required minlength='6' md-maxlength="20"/>
+          <div ng-messages="myForm.loginEr.$error" ng-show="myForm.loginEr.$dirty" multiple md-auto-hide="false">
+            <div ng-message="required">
+              Обязательно заполнить!
+            </div>
+            <div ng-message="pattern">
+              Русские буквы нельзя!
+            </div>
+            <div ng-message="minlength">Мало не пишите!</div>
+            <div ng-message="md-maxlength">Много не пишите!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+
+      <!--<div class="spacer" style="width: 300px; height: 7px;"></div>-->
+      <!--<label class="item item-input girelge-input" id="login-input2">-->
+        <!--<span class="input-label">Parol</span>-->
+        <!--<input type="password" placeholder="********" ng-model="formInfo.pass">-->
+      <!--</label>-->
+
+      <div layout="column" layout-align="center" flex>
+          <md-input-container class="knopka">
+              <label>Parol</label>
+              <input type="password" pattern="[A-Za-z0-9]{1,30}" name="passEr" ng-model="formInfo.pass" required minlength='6' md-maxlength="20"/>
+              <div ng-messages="myForm.passEr.$error" ng-show="myForm.passEr.$dirty" multiple md-auto-hide="false">
+                <div ng-message="required">
+                  Обязательно заполнить!
+                </div>
+                <div ng-message="pattern">
+                  Русские буквы нельзя!
+                </div>
+                <div ng-message="minlength">Мало не пишите!</div>
+                <div ng-message="md-maxlength">Много не пишите!</div>
+              </div>
+          </md-input-container>
+      </div>
+
+      <div  ng-show="loginYanys">Yalnys Login</div>
+      <div  ng-show="parolYanys">Yalnys Parol</div>
+
+      <!--<div class="spacer" style="height: 40px;"></div>-->
+      <md-button style="border-radius:10px 10px 10px 10px;" class="button button-stable  button-block" ng-click="ugratmak(formInfo)" ng-disabled="myForm.$invalid">Girmek</md-button>
+      <md-button style="border-radius:10px 10px 10px 10px;" class="button button-stable  button-block" ui-sref="menu.home">Yza Dolan</md-button>
+      <div style="margin-right:-20px;">
+        <a ui-sref="registrasiA" id="login-button2" style="left:-10px;font-weight:600;font-size:19px;" class="button button-light button-small button-full button-clear">Ya-da registrasiya bolun!</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

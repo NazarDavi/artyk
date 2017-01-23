@@ -1,0 +1,151 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Görnüşi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Görnüşi</label>
+                <md-select  ng-model="formFilterKatalog.jaygornus">
+                    <md-option  value="Jaý">Jaý</md-option>
+                    <md-option  value="Daça">Daça</md-option>
+                    <md-option  value="Kottej">Kottej</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Etaž Sany-->
+            <md-input-container flex="50">
+                <label>Etaž Sany</label>
+                <md-select  ng-model="formFilterKatalog.etaz">
+                    <md-option  value="1">1</md-option>
+                    <md-option  value="2">2</md-option>
+                    <md-option  value="3">3</md-option>
+                    <md-option  value="4">4</md-option>
+                    <md-option  value="5">5</md-option>
+                    <md-option  value="5+">5+</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Stenaň Materialy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Stenaň Materialy</label>
+                <md-select  ng-model="formFilterKatalog.stenmat">
+                    <md-option  value="Kerpiç">Kerpiç</md-option>
+                    <md-option  value="Panel">Panel</md-option>
+                    <md-option  value="Beton">Beton</md-option>
+                    <md-option  value="Agaçdan">Agaçdan</md-option>
+                    <md-option  value="Başga">Başga</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Şähere Çenli Aralyk-->
+            <md-input-container flex="50">
+                <label>Şähere Çenli Aralyk</label>
+                <md-select  ng-model="formFilterKatalog.daslyk">
+                    <md-option ng-repeat="ara in aralykshaher"  value="{{ara}}">{{ara}}km</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Jaýyň Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block" flex="50">
+                <label>Jaýyň Meýdany (m<sup><small>2</small></sup>-da)</label>
+                <input type="number" name="jaymeydan" ng-model="formFilterKatalog.jaymeydan" min="4"
+                       max="500" />
+                <div ng-messages="myForm.jaymeydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Min 4m<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Max 500m<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+            <!--Mellek Meýdany-->
+            <md-input-container class="md-block" flex="50">
+                <label>Mellek Meýdany (m<sup><small>2</small></sup>-da)</label>
+                <input type="number" step="1" name="meydan" ng-model="formFilterKatalog.meydan" min="10" max="1000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Min 10m<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Max 1000m<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Görnüşi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Вид</label>
+                <md-select  ng-model="formFilterKatalog.jaygornus">
+                    <md-option  value="Jaý">Дом</md-option>
+                    <md-option  value="Daça">Дача</md-option>
+                    <md-option  value="Kottej">Коттедж</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Etaž Sany-->
+            <md-input-container flex="50">
+                <label>Этажей в доме</label>
+                <md-select  ng-model="formFilterKatalog.etaz">
+                    <md-option  value="1">1</md-option>
+                    <md-option  value="2">2</md-option>
+                    <md-option  value="3">3</md-option>
+                    <md-option  value="4">4</md-option>
+                    <md-option  value="5">5</md-option>
+                    <md-option  value="5+">5+</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Stenaň Materialy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Материал стен</label>
+                <md-select  ng-model="formFilterKatalog.stenmat">
+                    <md-option  value="Kerpiç">Кирпич</md-option>
+                    <md-option  value="Panel">Панел</md-option>
+                    <md-option  value="Beton">Бетон</md-option>
+                    <md-option  value="Agaçdan">Дерево</md-option>
+                    <md-option  value="Başga">Другое</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Şähere Çenli Aralyk-->
+            <md-input-container flex="50">
+                <label>Расстояние до города</label>
+                <md-select  ng-model="formFilterKatalog.daslyk">
+                    <md-option ng-repeat="ara in aralykshaher"  value="{{ara}}">{{ara}}км</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Jaýyň Meýdany-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container class="md-block" flex="50">
+                <label>Площадь дома(м<sup><small>2</small></sup>)</label>
+                <input type="number" name="jaymeydan" ng-model="formFilterKatalog.jaymeydan" min="4"
+                       max="500" />
+                <div ng-messages="myForm.jaymeydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Мин 4м<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Макс 500м<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+            <!--Mellek Meýdany-->
+            <md-input-container class="md-block" flex="50">
+                <label>Площадь участка(м<sup><small>2</small></sup>)</label>
+                <input type="number" step="1" name="meydan" ng-model="formFilterKatalog.meydan" min="10" max="1000" />
+                <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Мин 10м<sup><small>2</small></sup>
+                    </div>
+                    <div ng-message="max">
+                        Макс 1000м<sup><small>2</small></sup>
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+</form>

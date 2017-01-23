@@ -1,0 +1,32 @@
+<form name="myForm">
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.markaAdy">
+                <ion-item>Marka
+                    <span class="item-note">{{ot.markaAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gornusi">
+                <ion-item>Görnüşi
+                    <span class="item-note">{{ot.gornusi}}</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.markaAdy">
+                <ion-item>Марка
+                    <span class="item-note">{{ot.markaAdy}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.gornusi" ng-repeat="re in gornusiRU | filter:{wariant:ot.gornusi}">
+                <ion-item>Виды
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+
+        </ion-list>
+    </div>
+</form>

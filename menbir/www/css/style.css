@@ -1,0 +1,408 @@
+
+
+/*HOME PAGE*/
+.filterHP{
+    border-radius:10px 10px 10px 10px;
+}
+.gosmakHP{
+    border-radius:10px 10px 10px 10px;
+}
+.bolumlerHP{
+    border-radius:15px 0px 0px 15px;
+}
+.yerinegoraSortHP{
+    border-radius:0px 15px 15px 0px;
+}
+.gownumeYaraya{
+    /*border-radius:100px 100px 100px 100px;*/
+}
+.image{
+    /*position: relative;*/
+}
+/*.suratRamka{*/
+/*}*/
+/*.suratRamka .suratHP{*/
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
+/*.baha-taze{*/
+    /*color:#000000;*/
+    /*font-weight:600;*/
+    /*text-align:center;*/
+/*}*/
+/*.baha-kone{*/
+    /*color:#FFFFFF;*/
+    /*font-weight:600;*/
+    /*text-align:center;*/
+/*}*/
+/*.adyObHP{*/
+    /*color:#000000;*/
+/*}*/
+/*.goyulanKategoriasyHP{*/
+    /*color:#000000;*/
+ /*}*/
+/*.goyulanWagtyHP{*/
+    /*color:#000000;*/
+/*}*/
+.md-button.md-fab{
+    background-color: #22b6ea;
+}
+.md-button.md-fab:hover{
+    background-color: red;
+}
+.color2{
+    background-color: red;
+}
+
+
+img.markaeml {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 10%;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #fff;
+}
+
+/*GLAWNY STRANITSANY ONORMAK*//*GLAWNY STRANITSANY ONORMAK*//*GLAWNY STRANITSANY ONORMAK*//*GLAWNY STRANITSANY ONORMAK*/
+.yzyHome{
+    background: #eeeeee;
+}
+.homeForm{
+    /*background-color: red;*/
+}
+/*Tutus Tawar gaytalanyan*/
+.bartawarlar{
+    position:absolute;
+    width: 100%;
+    height: 150px;
+    background: white;
+    border: 1px solid #b5b5b5;
+    margin: -10px -20px 5px 0px;
+    /*padding: -20px -20px 20px 20px;*/
+}
+/*Tawardaky suratyn ramkasy*/
+.image{
+    /*border: 1px solid red;*/
+    position: absolute;
+    margin: -10px;
+    top: 9px;
+    left: 9px;
+    z-index: 10;
+    width: 160px;
+    height: 120px;
+}
+/*Yaraya knopkasy*/
+.gownumeYaraya{
+    position: fixed;
+    z-index: 100;
+    /*float: right;*/
+    left: 160px;
+    top: -2px;
+    width: 10px;
+    height: 10px;
+}
+/*Tolenen knopkasy*/
+.tolenenBezeg{
+    position: fixed;
+    z-index: 80;
+    left: 190px;
+    top: -32px;
+    width: 10px;
+    height: 10px;
+}
+/*arassa suratyn ozi*/
+img.suratHP{
+    /*border: 1px solid yellow;*/
+    /*border-radius:60px 60px 60px 60px;*/
+}
+/*BAHASYNYN ADY*/
+.bahasyname{
+    position: absolute;
+    left: 160px;
+    top: 50px;
+    font-size: 10px;
+    color: #22b6ea;
+    /*background-color: #78c5f3;*/
+    /*border-radius: 10px 10px 10px 10px;*/
+}
+/*BAHASYny GORKEZYA*/
+.bahasy{
+    position: absolute;
+    left: 160px;
+    top: 65px;
+
+    font-weight:bold;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    background-color: #8ADFFF;
+    border-radius: 0px 10px 10px 0px;
+}
+.tawarAdy{
+    position: absolute;
+    left: 160px;
+    top: 30px;
+    width: 50%;
+    height: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1em;
+    /*overflow: hidden;*/
+    /*white-space: pre-line;*/
+    /*!*padding: 40px;*!*/
+    /*text-overflow: ellipsis;*/
+}
+.wagty{
+    /*float: right;*/
+    margin: 0 0 10px 10px;
+    position: absolute;
+    left: 220px;
+    top: -1px;
+    font-weight:bold;
+    font-size: 10px;
+    background: #dbdbdb;
+    border: 1px solid #b5b5b5;
+    border-radius: 0px 0px 10px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    opacity: 0.9;
+}
+.yelesyeri{
+    position: absolute;
+    left: 160px;
+    top: 90px;
+    width: 50%;
+    height: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1em;
+    font-weight:bold;
+    /*color: #4b4b50;*/
+}
+
+.kataloglar{
+    position: absolute;
+    left: 160px;
+    top: 115px;
+    width: 50%;
+    height: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1em;
+    color: #6E6E74;
+}
+.lista{
+    /*position:absolute;*/
+    height: 70px;
+    /*margin-bottom: 70px;*/
+}
+
+.gozlegknopkasy{
+    width: 70%;
+    border: 4px solid red;
+}
+.filterHP{
+    position: relative;
+    left: 71%;
+    top: -48px;
+}
+.gosmakHP{
+    position: relative;
+    left: 71%;
+    top: -48px;
+}
+
+
+/*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*//*LOGIN*/
+.knopka{
+    font-weight:bold;
+    background-color: #dbdbdb;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border: 1px solid #020202;
+    opacity: 0.7;
+    font-size: 11px;
+    color: #234a97;
+}
+
+
+
+/*MENU ÇEP GAPDALDAKY*//*MENU ÇEP GAPDALDAKY*//*MENU ÇEP GAPDALDAKY*//*MENU ÇEP GAPDALDAKY*//*MENU ÇEP GAPDALDAKY*//*MENU ÇEP GAPDALDAKY*/
+.menututus{
+    background: -webkit-linear-gradient(bottom, #22b6ea, #b2d1d9);
+	background: -o-linear-gradient(bottom,#22b6ea, #b2d1d9);
+	background: -moz-linear-gradient(bottom,#22b6ea, #b2d1d9);
+	background: linear-gradient(to bottom,#22b6ea, #b2d1d9);
+    position: absolute;
+}
+/*03749d*/
+.profile{ /*Awatardaky surat*/
+    position: relative;
+    text-align:center;
+    left: 30%;
+    /*border: 1px solid red;*/
+    width: 100px;
+    height: 100px;
+}
+.profile img{
+    /*text-align:center;*/
+    border-radius: 50px 50px 50px 50px;
+    /*padding: 1px;*/
+    border: 2px solid #ffffff;
+}
+.profileName{
+    position: relative;
+    color: #ffffff;
+    font-weight: 600;
+    font-style:normal;
+    text-align:center;
+}
+.itemnote{
+    position: absolute;
+    background-color: #ff5425;
+    float: right;
+    padding-top: -15px;
+    padding-left: 4px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px 10px 10px 10px;
+    top:10px;
+    left: 85%;
+    font-size: 13px;
+}
+.form_menu{
+    /*position: absolute;*/
+    /*opacity: 0.1;*/
+    /*background-color: #ff5425;*/
+}
+.hatlanrenki{
+    position: relative;
+    /*opacity: 1;*/
+    margin: 5px;
+    background: none;
+
+    /*color: red;*/
+    /*background-color: #ffffff;*/
+}
+.side-menu-item1 ion-item{
+    background-color: #0d6a8c;
+    color: #0d6a8c;
+}
+.hatlanrenki i{
+    background-color: #ffe341;
+}
+
+/*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/  /*BILDIRIS*/
+.bahalar {
+    color: #149fd2;
+    font-weight: 600;
+    /*text-align: center;*/
+
+    /*background-color: #149fd2;*/
+    border: 1px solid #22b6ea;
+
+    width: 200px;
+    height: 20px;
+    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    margin-bottom: 2px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+.listab{
+    /*position: absolute;*/
+}
+.listab div{
+    /*border: 1px solid red;*/
+    /*text-align: center;*/
+    /*margin-bottom: 2px;*/
+    /*font-size: 15px;*/
+    /*margin-left: 5px;*/
+}
+.tawarAdyny{
+    font-size: 20px;
+    /*margin-left: 10px;*/
+    margin: 15px;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    /*font-family: Georgia, Cambria, "Times New Roman", Times, serif;*/
+}
+.yerlerwekataroklar{
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    margin: 10px;
+}
+.maglumatyeri {
+    margin: 10px;
+    padding: 2px;
+    border: 2px solid #9a9a9a;
+    border-radius: 5px;
+    font-family: Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+/*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/   /*SURAT YUKLE*/
+.suratTAWaa{
+    /*min-width: 150px;*/
+    /*min-height: 150px;*/
+    /*width: 100px;*/
+    /*height: 250px;*/
+    /*border:1px solid red;*/
+    line-height: 1em;
+    /*overflow: hidden;*/
+    overflow: scroll;
+    /*white-space: pre-line;*/
+    /*padding: 40px;*/
+    /*text-overflow: ellipsis;*/
+    /*position: relative;*/
+    /*width: 50%;*/
+
+}
+.esasySurat{
+    width: auto;
+    height: 200px;
+    overflow: hidden;
+}
+.suratTAWButton{
+    width: 90%;
+    margin: 0px;
+    height: 15px;
+}
+.suratTAWButton2{
+    width:200px;
+    height: 20px;
+
+}
+.suratTAW{
+    width: auto;
+    height: 100px;
+    margin-right: 10px;
+    margin-left: 10px;
+    /*padding-right: 10px;*/
+    /*display: block;*/
+    /*text-align: center;*/
+    /*background-size:cover;*/
+    /*content: "";*/
+    /*display: block;*/
+    /*padding-top: 100%;*/
+    /*min-width: 100px;*/
+    /*min-height: 100px; !*задаем минимальную ширину и высоту, картинка подстроится под нужные размера блока, пропорции сохраняются*!*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

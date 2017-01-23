@@ -1,0 +1,150 @@
+<ion-view title="Bildiriş">
+  <ion-content padding="false" class="has-headera">
+
+    <div ng-show="diliTmRu=='TM'">
+      <form class="listab" ng-repeat="ot in otdelnySQL"> <!--| filter:{id:idUser}-->
+        <!--<button id="bildiri-button13" style="border-radius:50px 50px 50px 50px;" class="{{ot.yaraya | yurejikBaYok}}">-->
+
+        <!--</button><div ng-if="yarayamy===true"><button class="gownumeYaraya button button-positive button-small button-outline icon ion-heart"></button></div>-->
+        <!--<div ng-if="yarayamy===true">BAR</div>-->
+        <!--<div ng-if="yarayamy==='false'">YOK</div>-->
+        <!--<div ng-if="yarayamy=='false'"><button class="gownumeYaraya button button-positive button-small button-outline icon ion-ios-heart-outline"></button></div>-->
+
+        <ion-slide-box>
+          <ion-slide ng-if="!ot.img1"> <!--ng-if="ot.img1"-->
+            <img ng-src="img/noimg.png" width="100%" height="200px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img1"> <!--ng-if="ot.img1"-->
+            <img class="popup" tabindex="1" ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img1}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img2">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img2}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img3">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img3}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img4">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img4}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img5">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img5}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img6">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img6}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img7">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img7}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img8">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img8}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img9">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img9}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img10">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img10}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+        </ion-slide-box>
+
+
+        <div class="tawarAdyny md-title">{{ot.tawarAdy}}</div>
+
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) * 5000 | currency:"":0}} manat</div>
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) | currency:"":2}} manat</div>
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) / 3.5 | currency:"$":2}}</div>
+
+        <div class="yerlerwekataroklar">Ýeri: {{ot.welayat}} wel<trim ng-show="ot.etrap">, {{ot.etrap}} etr</trim><trim ng-show="ot.dayh">, {{ot.dayh}} d/b</trim></div>
+        <div class="yerlerwekataroklar">Katalog: {{ot.katUra1}}, {{ot.katUra2}}, {{ot.katUra3}}</div>
+        <div class="yerlerwekataroklar">Wagty: {{ot.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+        <div class="maglumatyeri">{{ot.maglumat}}</div>
+
+
+        <span ng-include="magAdy"></span>
+
+        <!--<ion-item class="item-avatar item-icon-right stable" ui-sref="menu.awtoryHemmeSergileri">-->
+          <!--<img src="img/avman.png">-->
+          <!--<h2stable>{{otdelniUser.name}}-->
+            <!--<p>Awtoryň hemme sergisi</p>-->
+            <!--<i class="icon ion-arrow-right-a" ></i>-->
+          <!--</h2stable>-->
+        <!--</ion-item>-->
+
+
+      </form>
+    </div>
+    <div ng-show="diliTmRu=='RU'">
+      <form class="listab" ng-repeat="ot in otdelnySQL"> <!--| filter:{id:idUser}-->
+        <!--<button id="bildiri-button13" style="border-radius:50px 50px 50px 50px;" class="{{ot.yaraya | yurejikBaYok}}">-->
+
+        <!--</button><div ng-if="yarayamy===true"><button class="gownumeYaraya button button-positive button-small button-outline icon ion-heart"></button></div>-->
+        <!--<div ng-if="yarayamy===true">ЕСТЬ</div>-->
+        <!--<div ng-if="yarayamy==='false'">НЕТ</div>-->
+        <!--<div ng-if="yarayamy=='false'"><button class="gownumeYaraya button button-positive button-small button-outline icon ion-ios-heart-outline"></button></div>-->
+        <ion-slide-box>
+          <ion-slide ng-if="!ot.img1"> <!--ng-if="ot.img1"-->
+            <img ng-src="img/noimg.png" width="100%" height="200px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img1"> <!--ng-if="ot.img1"-->
+            <img class="popup" tabindex="1" ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img1}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img2">
+              <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img2}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img3">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img3}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img4">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img4}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img5">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img5}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img6">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img6}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img7">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img7}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img8">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img8}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img9">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img9}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+          <ion-slide ng-if="ot.img10">
+            <img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img10}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">
+          </ion-slide>
+        </ion-slide-box>
+
+        <!--<div>-->
+          <!--<img ng-src="http://a0109349.xsph.ru/img/surat_{{ot.img1}}" width="100%" height="150px" style="display: block; margin-left: auto; margin-right: auto;">-->
+          <!--<img ng-src="img/noimg.png" width=100%" height=200px" class="suratHP" style="display: block; margin-left: auto; margin-right: auto;">-->
+        <!--</div>-->
+        <div class="tawarAdyny md-title">{{ot.tawarAdy}}</div>
+
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) * 5000 | currency:"":0}} манат</div>
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) | currency:"":2}} манат</div>
+        <div class="bahalar">{{bahasyUyt(ot.bahasy, ot.pulBelligi) / 3.5 | currency:"$":2}}</div>
+
+        <!--<h5 id="bildiri-heading24" style="color:#000000;">Место: {{ot.welayat}} <trim ng-show="ot.etrap">, {{ot.etrap}}</trim><trim ng-show="ot.dayh">, {{ot.dayh}}</trim></h5>-->
+        <div class="yerlerwekataroklar">Место: <trim ng-if="ot" ng-if="ot.welayat" ng-repeat="wer in welayatlar | filter:{wariant: ot.welayat}">{{wer.wariantRU}} вел</trim><trim ng-if="ot" ng-if="ot.etrap" ng-repeat="etr in etraplar | filter:{wariant: ot.etrap, haysy:ot.welayat}">, {{etr.wariantRU}} этр</trim><trim ng-if="ot" ng-if="ot.dayh" ng-repeat="dar in dayhan | filter:{wariant: ot.dayh, haysy:ot.etrap}">, {{dar.wariantRU}} д/б</trim></div>
+        <div class="yerlerwekataroklar">Каталог: <trim  ng-repeat="ku1r in katUra1Rus | filter:{wariant: ot.katUra1}">{{ku1r.wariantRU}}</trim><trim ng-repeat="ku2r in katUra2Rus | filter:{wariant: ot.katUra2, haysykat: ot.katUra1}">, {{ku2r.wariantRU}}</trim><trim ng-repeat="ku3r in katUra3Rus | filter:{wariant: ot.katUra3, haysykat: ot.katUra2}">, {{ku3r.wariantRU}}</trim></div>
+        <div class="yerlerwekataroklar">Времья: {{ot.wagty | date : 'dd-MM-yyyy, HH:mm'}}</div>
+        <div class="maglumatyeri">{{ot.maglumat}}</div>
+
+
+        <span ng-include="magAdy"></span>
+
+        <!--<ion-item class="item-avatar item-icon-right stable" ui-sref="menu.awtoryHemmeSergileri">-->
+          <!--<img src="img/avman.png">-->
+          <!--<h2stable>{{otdelniUser.name}}-->
+            <!--<p>Все объявление автора</p>-->
+            <!--<i class="icon ion-arrow-right-a" ></i>-->
+          <!--</h2stable>-->
+        <!--</ion-item>-->
+      </form>
+    </div>
+    <!--<a ui-sref="menu.gWnNZeAranHarytlar" id="bildiri-button9" style="border-radius:50px 50px 50px 50px;" class="button button-positive button-large button-outline icon ion-android-call"></a>-->
+    <!--<a ui-sref="menu.sMS" id="bildiri-button10" style="border-radius:100px 100px 100px 100px;" class="button button-positive button-large button-outline icon ion-android-mail"></a>-->
+  </ion-content>
+</ion-view>

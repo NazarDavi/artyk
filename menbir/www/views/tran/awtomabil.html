@@ -1,0 +1,782 @@
+<form name="myForm">
+    <!--<pre>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</pre>-->
+    <!--<span> {{formInfo}} </span>-->
+    <!--<pre>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</pre>-->
+
+    <div ng-if="diliTmRu=='TM'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Welaýatlar</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Ertaplar</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Dayhan Birlesik (Geňeşlik, Oba)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariant}}({{dayh.konewariant}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Markasy-->
+        <div layout="row" layout-align="center" flex>
+                <md-input-container flex="50">
+                    <label>Marka</label>
+                    <md-select ng-change="showSelectValue(formInfo.marka)" name="MarkaError" ng-model="formInfo.marka"  required>
+                        <md-option ng-repeat="marka in markalar | orderBy :'value'" value="{{marka.value}}">
+                            <trim ng-if="marka.value<104"><img class="markaeml" ng-src="img/marka/{{marka.value}}.png" style=" width:50px; height:30px"> {{marka.name}}</trim>
+                            <trim ng-if="marka.value>104">{{marka.name}}</trim>
+                    </md-select>
+                    <div class="errors" ng-messages="myForm.MarkaError.$error">
+                        <div ng-message="required">Hokman saylamaly!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="50" ng-show="markaBelledim">
+                    <label>Modeli</label>
+                    <md-select name="ModelError" ng-model="formInfo.modl">
+                        <md-option ng-repeat="modl in modeller" value="{{modl.value}}">
+                            <trim ng-if="formInfo.marka<104"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">    {{modl.name}}</trim>
+                            <trim ng-if="formInfo.marka>104">{{modl.name}}</trim>
+                        </md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="myForm.ModelError.$error">
+                        <div ng-message="required">Hokman saylamaly!</div>
+                    </div>
+                </md-input-container>
+            <!--</div>-->
+        </div>
+
+        <!--Çykan Ýyly-->
+        <div  layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Çykan Ýyly</label>
+                <md-select name="YyllrError" ng-model="formInfo.yyly" required>
+                    <md-option ng-repeat="yyly in yyllar" value="{{yyly}}">{{yyly}} ýyl</md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.YyllrError.$error">
+                    <div ng-message="required">Hokman saylamaly!</div>
+                </div>
+            </md-input-container>
+            <!--Geçen Ýoly-->
+            <md-input-container flex="50" class="md-block" ng-show="surulenTazeMi">
+                <label>Geçen Ýoly (km-da)</label>
+                <input type="number" step="any" name="gecenYoly" ng-model="formInfo.gecenYoly"
+                       max="50000000" />
+                <div ng-messages="myForm.gecenYoly.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Min 0 km
+                    </div>
+                    <div ng-message="max">
+                        Max 50 mln km
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!--Kuzowyň Görnüşi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Kuzowyň Görnüşi</label>
+                <md-select name="KuzowError" ng-model="formInfo.kuzow">
+                    <md-option ng-repeat="kuzow in kuzowa_gornusi" value="{{kuzow.wariant}}">
+                        <img class="markaeml" ng-src="img/kuz/{{kuzow.surat}}.png" style=" width:50px; height:30px">{{kuzow.wariant}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <!--Maşyn Kakylanmy?-->
+            <md-input-container flex="50" ng-show="surulenTazeMi">
+                <label>Maşynyň Ýagdaýy?</label>
+                <md-select  ng-model="formInfo.kakylan">
+                    <md-option  value="Kakylan"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Kakylan</md-option>
+                    <md-option  value="Kakylmadyk"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Kakylmadyk</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Gapysynyň Sany?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Gapy Sany?</label>
+                <md-select  ng-model="formInfo.gapysany">
+                    <md-option  value="--">--</md-option>
+                    <md-option  value="1">1</md-option>
+                    <md-option  value="2">2</md-option>
+                    <md-option  value="3">3</md-option>
+                    <md-option  value="4">4</md-option>
+                    <md-option  value="5">5</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Dwigateliň Göwrümi?-->
+            <md-input-container flex="50" class="md-block">
+                <label>Dwigateliň Göwrümi?</label>
+                <md-select  ng-model="formInfo.dguyji">
+                    <md-option  value="--">--</md-option>
+                    <md-option  value="0,6">0,6 litir</md-option>
+                    <md-option  value="0,7">0,7 litir</md-option>
+                    <md-option  value="0,8">0,8 litir</md-option>
+                    <md-option  value="0,9">0,9 litir</md-option>
+                    <md-option  value="1,0">1,0 litir</md-option>
+                    <md-option  value="1,1">1,1 litir</md-option>
+                    <md-option  value="1,2">1,2 litir</md-option>
+                    <md-option  value="1,3">1,3 litir</md-option>
+                    <md-option  value="1,4">1,4 litir</md-option>
+                    <md-option  value="1,5">1,5 litir</md-option>
+                    <md-option  value="1,6">1,6 litir</md-option>
+                    <md-option  value="1,7">1,7 litir</md-option>
+                    <md-option  value="1,8">1,8 litir</md-option>
+                    <md-option  value="1,9">1,9 litir</md-option>
+                    <md-option  value="2,0">2,0 litir</md-option>
+                    <md-option  value="2,1">2,1 litir</md-option>
+                    <md-option  value="2,2">2,2 litir</md-option>
+                    <md-option  value="2,3">2,3 litir</md-option>
+                    <md-option  value="2,4">2,4 litir</md-option>
+                    <md-option  value="2,5">2,5 litir</md-option>
+                    <md-option  value="2,6">2,6 litir</md-option>
+                    <md-option  value="2,7">2,7 litir</md-option>
+                    <md-option  value="2,8">2,8 litir</md-option>
+                    <md-option  value="2,9">2,9 litir</md-option>
+                    <md-option  value="3,0">3,0 litir</md-option>
+                    <md-option  value="3,1">3,1 litir</md-option>
+                    <md-option  value="3,2">3,2 litir</md-option>
+                    <md-option  value="3,3">3,3 litir</md-option>
+                    <md-option  value="3,4">3,4 litir</md-option>
+                    <md-option  value="3,5">3,5 litir</md-option>
+                    <md-option  value="3,6">3,6 litir</md-option>
+                    <md-option  value="3,7">3,7 litir</md-option>
+                    <md-option  value="3,8">3,8 litir</md-option>
+                    <md-option  value="3,9">3,9 litir</md-option>
+                    <md-option  value="4,0">4,0 litir</md-option>
+                    <md-option  value="4,1">4,1 litir</md-option>
+                    <md-option  value="4,2">4,2 litir</md-option>
+                    <md-option  value="4,3">4,3 litir</md-option>
+                    <md-option  value="4,4">4,4 litir</md-option>
+                    <md-option  value="4,5">4,5 litir</md-option>
+                    <md-option  value="4,6">4,6 litir</md-option>
+                    <md-option  value="4,7">4,7 litir</md-option>
+                    <md-option  value="4,8">4,8 litir</md-option>
+                    <md-option  value="4,9">4,9 litir</md-option>
+                    <md-option  value="5,0">5,0 litir</md-option>
+                    <md-option  value="5,1">5,1 litir</md-option>
+                    <md-option  value="5,2">5,2 litir</md-option>
+                    <md-option  value="5,3">5,3 litir</md-option>
+                    <md-option  value="5,4">5,4 litir</md-option>
+                    <md-option  value="5,5">5,5 litir</md-option>
+                    <md-option  value="5,6">5,6 litir</md-option>
+                    <md-option  value="5,7">5,7 litir</md-option>
+                    <md-option  value="5,8">5,8 litir</md-option>
+                    <md-option  value="5,9">5,9 litir</md-option>
+                    <md-option  value="6,0">6,0 litir</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Dwigateliň Görnüşi?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Dwigateliň Görnüşi?</label>
+                <md-select  ng-model="formInfo.dwiGornusi">
+                    <!--<md-option  value="Görkezjek däl">Görkezjek däl</md-option>-->
+                    <md-option  value="Benzin">Benzin</md-option>
+                    <md-option  value="Gaz/Benzin">Gaz/Benzin</md-option>
+                    <md-option  value="Dizel">Dizel</md-option>
+                    <md-option  value="Elektro">Elektro</md-option>
+                    <md-option  value="Gaz">Gaz</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Karobka Peredaça-->
+            <md-input-container  flex="50">
+                <label>Karobka Peredaça</label>
+                <md-select  ng-model="formInfo.karPereda">
+                    <md-option  value="Mehanika/Ruçnoý">Mehanika/Ruçnoý</md-option>
+                    <md-option  value="Awtomat">Awtomat</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Çekijiligi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Çekijiligi</label>
+                <md-select  ng-model="formInfo.cekijilig">
+                    <md-option  value="Öňi">Öňi</md-option>
+                    <md-option  value="Yzy">Yzy</md-option>
+                    <md-option  value="Öňi/Yzy">Öňi/Yzy</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Reňki-->
+            <md-input-container flex="50">
+                <label>Reňki</label>
+                <md-select   ng-model="formInfo.renk">
+                    <md-option  value="Ak"><md-icon style="background-color: #fffcfa; border-radius:15px 15px 15px 15px;"></md-icon>Ak</md-option>
+                    <md-option  value="Goňras"><md-icon style="background-color: #f1ddba; border-radius:15px 15px 15px 15px;"></md-icon>Goňras</md-option>
+                    <md-option  value="Gülgüne"><md-icon style="background-color: #ffcada; border-radius:15px 15px 15px 15px;"></md-icon>Gülgüne</md-option>
+                    <md-option  value="Sary"><md-icon style="background-color: #ffeb78; border-radius:15px 15px 15px 15px;"></md-icon>Sary</md-option>
+                    <md-option  value="Goýy Goň"><md-icon style="background-color: #ada75b; border-radius:15px 15px 15px 15px;"></md-icon>Goýy Goň</md-option>
+                    <md-option  value="Altyn"><md-icon style="background-color: #feca49; border-radius:15px 15px 15px 15px;"></md-icon>Altyn</md-option>
+                    <md-option  value="Narynç"><md-icon style="background-color: #ff7906; border-radius:15px 15px 15px 15px;"></md-icon>Narynç</md-option>
+                    <md-option  value="Bürünç"><md-icon style="background-color: #bd5937; border-radius:15px 15px 15px 15px;"></md-icon>Bürünç</md-option>
+                    <md-option  value="Goňur"><md-icon style="background-color: #974b00; border-radius:15px 15px 15px 15px;"></md-icon>Goňur</md-option>
+                    <md-option  value="Wişnýa"><md-icon style="background-color: #911e42; border-radius:15px 15px 15px 15px;"></md-icon>Wişnýa</md-option>
+                    <md-option  value="Açyk Gyr"><md-icon style="background-color: #b62d3f; border-radius:15px 15px 15px 15px;"></md-icon>Açyk Gyr</md-option>
+                    <md-option  value="Goýy Gyr"><md-icon style="background-color: #c400aa; border-radius:15px 15px 15px 15px;"></md-icon>Goýy Gyr</md-option>
+                    <md-option  value="Gyzyl"><md-icon style="background-color: #fe0002; border-radius:15px 15px 15px 15px;"></md-icon>Gyzyl</md-option>
+                    <md-option  value="Ýaşyl"><md-icon style="background-color: #28b26f; border-radius:15px 15px 15px 15px;"></md-icon>Ýaşyl</md-option>
+                    <md-option  value="Gök"><md-icon style="background-color: #3144b6; border-radius:15px 15px 15px 15px;"></md-icon>Gök</md-option>
+                    <md-option  value="Benewşe"><md-icon style="background-color: #5a009d; border-radius:15px 15px 15px 15px;"></md-icon>Benewşe</md-option>
+                    <md-option  value="Mawy"><md-icon style="background-color: #78c5f3; border-radius:15px 15px 15px 15px;"></md-icon>Mawy</md-option>
+                    <md-option  value="Çal"><md-icon style="background-color: rgb(186, 186, 186); border-radius:15px 15px 15px 15px;"></md-icon>Çal</md-option>
+                    <md-option  value="Kümüş"><md-icon style="background-color: #a1a1a1; border-radius:15px 15px 15px 15px;"></md-icon>Kümüş</md-option>
+                    <md-option  value="Safari"><md-icon style="background-color: #877f74; border-radius:15px 15px 15px 15px;"></md-icon>Safari</md-option>
+                    <md-option  value="Gara"><md-icon style="background-color: #000000; border-radius:15px 15px 15px 15px;"></md-icon>Gara</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Goşmaça Maglumat-->
+        <div layout="row"  layout-align="center" flex>
+            <md-checkbox flex="50" ng-model="formInfo.alysCalys" aria-label="Checkbox">
+                Alyş-Çalyş?
+            </md-checkbox>
+            <md-checkbox flex="50" ng-model="formInfo.garasykly" aria-label="Checkbox">
+                Garaşykly?
+            </md-checkbox>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Bildirişiň ady</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Hökman doldurmaly!
+                    </div>
+                    <div ng-message="minlength">Az ýazmaň!</div>
+                    <div ng-message="md-maxlength">Köp ýazmaň!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Maglumat</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Goşmaça maglumatlary girizip bilersiňiz:
+            Telefon nomeriňizi belläň!!!
+            Jaň etmeli wagtyny anyklaň."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Bahasy</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Bahasyny görkeziň!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Pul Belligi</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Köne Manat (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Täze Manat (TMT)</em></md-option>
+                    <md-option value="$"><em>Dollar ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Hokman saylamaly!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Surat-->
+        <div class="row">
+            <div class="box-inner" style="margin-bottom:4%;">
+                    <div class="box-content">
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <label>Ýüklenmeli Surat:</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <p>
+                                    <img class="" style="width:150px; height:130px;"  ng-src="{{step}}" />
+                                </p>
+                            </div>
+                        </div>
+
+                        <label class="" ng-disabled="maxImgBoldy">
+                            <div style="text-align: center; overflow: hidden; width: 60px; height: 20px; border: 1px solid #038f1a; background-color: #038f1a;" ng-disabled="maxImgBoldy">
+                                <div style="color: #fff; font-size: 20px; font-weight: bold;" ng-disabled="maxImgBoldy">Surat</div>
+                                <input  ng-disabled="maxImgBoldy" id="upload"  file-model = "myFile" type='file' file-input="files" class="input-xlarge" onchange="angular.element(this).scope().imageUpload(event)"
+                                        style="display:none; margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 100px;">
+                            </div>
+                        </label>
+
+                        <div class="row" style="margin:1%;" ng-show="step">
+                            <div class="col-md-4">
+                                <button ng-disabled="maxImgBoldy" class="btn btn-info" ng-click="upload()">
+                                    <i class=""></i>
+                                    Ýükle
+                                </button>
+                            </div>
+                            <div class="col-md-6" ng-show="isProcessing">
+                                <img class=""  src="ajax-loaders/ajax-loader-5.gif" />
+                            </div>
+                        </div>
+
+                        <!--<div class="row" style="margin:1%; color:red; position: fixed; z-index:10000;" ng-show="showMsg">-->
+                            <!--<div class="col-md-12">-->
+                                <!--<div class="alert alert-success">-->
+                                    <!--{{msg}}-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+
+
+    <!--
+
+                <div class="box-inner">
+                    <div class="box-header well" data-original-title="">
+                        <h2>Picture About To Upload!</h2>
+                    </div>
+                    <div class="box-content">
+                        <div class="row" style="margin:1%; ">
+                            <div class="col-md-5 left">
+                                <h6>Name: {{file.name }}</h6>
+                            </div>
+                            <div class="col-md-4 left">
+                                <h6>Size: {{file.size/1024|number:2 }} KB</h6>
+                            </div>
+                            <div class="col-md-3 bottom">
+                                <h6>Type: {{file.type.slice(file.type.lastIndexOf('/') + 1)}} </h6>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <p>
+                                    <img class="" style="width:150px; height:150px;"  ng-src="{{step}}" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+
+            <div class="box col-md-8">
+                <div class="box-inner" style="margin-bottom:4%;">
+                    <div>
+                        <h4>Ýüklenen Suratlar</h4>
+                    </div>
+                    <div class="box-content" style="max-height: 500px; overflow:auto;" ng-repeat="iFi in iFile">
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <!--<p>{{iFi}}-->
+                                    <img class="img-thumbnail" style="width:50px; height:50px;" ng-src="http://a0109349.xsph.ru/img/surat_{{iFi}}"/> <!-- ng-src="http://a0109349.xsph.ru/img/surat_11133.jpg" />-->
+                                    <button ng-click="deletImage(iFi)">Pozmak</button>
+                                <!--</p>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Doldurulmadyk ýer galdy!!! ("*" ba ýerlerini)</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Ugratmak</md-button>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Велаят</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Этрап</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Дайхан Бирлешик (Генгешлик, Село)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariantRU}}({{dayh.konewariantRU}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Markasy-->
+        <div layout="row" layout-align="center" flex>
+            <!--<div flex>-->
+            <md-input-container flex="50">
+                <label>Марка</label>
+                <md-select ng-change="showSelectValue(formInfo.marka)" name="MarkaError" ng-model="formInfo.marka"  required>
+                    <md-option ng-repeat="marka in markalar | orderBy :'value'" value="{{marka.value}}">
+                        <trim ng-if="marka.value<104"><img class="markaeml" ng-src="img/marka/{{marka.value}}.png" style=" width:50px; height:30px"> {{marka.name}}</trim>
+                        <trim ng-if="marka.value>104">{{marka.name}}</trim>
+                </md-select>
+                <div class="errors" ng-messages="myForm.MarkaError.$error">
+                    <div ng-message="required">Обязательно выбрать!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50" ng-show="markaBelledim">
+                <label>Модель</label>
+                <md-select name="ModelError" ng-model="formInfo.modl">
+                    <md-option ng-repeat="modl in modeller" value="{{modl.value}}">
+                        <trim ng-if="formInfo.marka<104"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">    {{modl.name}}</trim>
+                        <trim ng-if="formInfo.marka>104">{{modl.name}}</trim>
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <!--</div>-->
+        </div>
+
+        <!--Çykan Ýyly-->
+        <div  layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Год Выпуска</label>
+                <md-select name="YyllrError" ng-model="formInfo.yyly">
+                    <md-option ng-repeat="yyly in yyllar" value="{{yyly}}">{{yyly}} год</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Geçen Ýoly-->
+            <md-input-container flex="50" class="md-block" ng-show="surulenTazeMi">
+                <label>Пробег (в км)</label>
+                <input type="number" step="any" name="gecenYoly" ng-model="formInfo.gecenYoly"
+                       max="50000000" />
+                <div ng-messages="myForm.gecenYoly.$error" multiple md-auto-hide="false">
+                    <div ng-message="min">
+                        Мин 0 км
+                    </div>
+                    <div ng-message="max">
+                        Макс 50 млн км
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!--Kuzowyň Görnüşi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Тип Кузова</label>
+                <md-select name="KuzowError" ng-model="formInfo.kuzow">
+                    <md-option ng-repeat="kuzow in kuzowa_gornusi" value="{{kuzow.wariant}}">
+                        <img class="markaeml" ng-src="img/kuz/{{kuzow.surat}}.png" style=" width:50px; height:30px">{{kuzow.wariantRU}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <!--Maşyn Kakylanmy?-->
+            <md-input-container flex="50" ng-show="surulenTazeMi">
+                <label>Состояние?</label>
+                <md-select  ng-model="formInfo.kakylan">
+                    <md-option  value="Kakylan"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Битый</md-option>
+                    <md-option  value="Kakylmadyk"><img class="markaeml" ng-src="img/marka/mo2.png" style=" width:1px; height:30px">Не Битый</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Gapysynyň Sany?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Количество Дверей?</label>
+                <md-select  ng-model="formInfo.gapysany">
+                    <md-option  value="--">--</md-option>
+                    <md-option  value="1">1</md-option>
+                    <md-option  value="2">2</md-option>
+                    <md-option  value="3">3</md-option>
+                    <md-option  value="4">4</md-option>
+                    <md-option  value="5">5</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Dwigateliň Göwrümi?-->
+            <md-input-container flex="50" class="md-block">
+                <label>Объём Двигателя?</label>
+                <md-select  ng-model="formInfo.dguyji">
+                    <md-option  value="--">--</md-option>
+                    <md-option  value="0,6">0,6 литр</md-option>
+                    <md-option  value="0,7">0,7 литр</md-option>
+                    <md-option  value="0,8">0,8 литр</md-option>
+                    <md-option  value="0,9">0,9 литр</md-option>
+                    <md-option  value="1,0">1,0 литр</md-option>
+                    <md-option  value="1,1">1,1 литр</md-option>
+                    <md-option  value="1,2">1,2 литр</md-option>
+                    <md-option  value="1,3">1,3 литр</md-option>
+                    <md-option  value="1,4">1,4 литр</md-option>
+                    <md-option  value="1,5">1,5 литр</md-option>
+                    <md-option  value="1,6">1,6 литр</md-option>
+                    <md-option  value="1,7">1,7 литр</md-option>
+                    <md-option  value="1,8">1,8 литр</md-option>
+                    <md-option  value="1,9">1,9 литр</md-option>
+                    <md-option  value="2,0">2,0 литр</md-option>
+                    <md-option  value="2,1">2,1 литр</md-option>
+                    <md-option  value="2,2">2,2 литр</md-option>
+                    <md-option  value="2,3">2,3 литр</md-option>
+                    <md-option  value="2,4">2,4 литр</md-option>
+                    <md-option  value="2,5">2,5 литр</md-option>
+                    <md-option  value="2,6">2,6 литр</md-option>
+                    <md-option  value="2,7">2,7 литр</md-option>
+                    <md-option  value="2,8">2,8 литр</md-option>
+                    <md-option  value="2,9">2,9 литр</md-option>
+                    <md-option  value="3,0">3,0 литр</md-option>
+                    <md-option  value="3,1">3,1 литр</md-option>
+                    <md-option  value="3,2">3,2 литр</md-option>
+                    <md-option  value="3,3">3,3 литр</md-option>
+                    <md-option  value="3,4">3,4 литр</md-option>
+                    <md-option  value="3,5">3,5 литр</md-option>
+                    <md-option  value="3,6">3,6 литр</md-option>
+                    <md-option  value="3,7">3,7 литр</md-option>
+                    <md-option  value="3,8">3,8 литр</md-option>
+                    <md-option  value="3,9">3,9 литр</md-option>
+                    <md-option  value="4,0">4,0 литр</md-option>
+                    <md-option  value="4,1">4,1 литр</md-option>
+                    <md-option  value="4,2">4,2 литр</md-option>
+                    <md-option  value="4,3">4,3 литр</md-option>
+                    <md-option  value="4,4">4,4 литр</md-option>
+                    <md-option  value="4,5">4,5 литр</md-option>
+                    <md-option  value="4,6">4,6 литр</md-option>
+                    <md-option  value="4,7">4,7 литр</md-option>
+                    <md-option  value="4,8">4,8 литр</md-option>
+                    <md-option  value="4,9">4,9 литр</md-option>
+                    <md-option  value="5,0">5,0 литр</md-option>
+                    <md-option  value="5,1">5,1 литр</md-option>
+                    <md-option  value="5,2">5,2 литр</md-option>
+                    <md-option  value="5,3">5,3 литр</md-option>
+                    <md-option  value="5,4">5,4 литр</md-option>
+                    <md-option  value="5,5">5,5 литр</md-option>
+                    <md-option  value="5,6">5,6 литр</md-option>
+                    <md-option  value="5,7">5,7 литр</md-option>
+                    <md-option  value="5,8">5,8 литр</md-option>
+                    <md-option  value="5,9">5,9 литр</md-option>
+                    <md-option  value="6,0">6,0 литр</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Dwigateliň Görnüşi?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Тип Двигателя?</label>
+                <md-select  ng-model="formInfo.dwiGornusi">
+                    <!--<md-option  value="Görkezjek däl">Görkezjek däl</md-option>-->
+                    <md-option  value="Benzin">Бензин</md-option>
+                    <md-option  value="Gaz/Benzin">Газ/Бензин</md-option>
+                    <md-option  value="Dizel">Дизель</md-option>
+                    <md-option  value="Elektro">Электро</md-option>
+                    <md-option  value="Gaz">Газ</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Karobka Peredaça-->
+            <md-input-container  flex="50">
+                <label>Коробка передач</label>
+                <md-select  ng-model="formInfo.karPereda">
+                    <md-option  value="Mehanika/Ruçnoý">Механика</md-option>
+                    <md-option  value="Awtomat">Автомат</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Çekijiligi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Привод</label>
+                <md-select  ng-model="formInfo.cekijilig">
+                    <md-option  value="Öňi">Передний</md-option>
+                    <md-option  value="Yzy">Задний</md-option>
+                    <md-option  value="Öňi/Yzy">Полный</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Reňki-->
+            <md-input-container flex="50">
+                <label>Цвет</label>
+                <md-select   ng-model="formInfo.renk">
+                    <md-option  value="Ak"><md-icon style="background-color: #fffcfa; border-radius:15px 15px 15px 15px;"></md-icon>Белый</md-option>
+                    <md-option  value="Goňras"><md-icon style="background-color: #f1ddba; border-radius:15px 15px 15px 15px;"></md-icon>Бежевый</md-option>
+                    <md-option  value="Gülgüne"><md-icon style="background-color: #ffcada; border-radius:15px 15px 15px 15px;"></md-icon>Розовый</md-option>
+                    <md-option  value="Sary"><md-icon style="background-color: #ffeb78; border-radius:15px 15px 15px 15px;"></md-icon>Жёлтый</md-option>
+                    <md-option  value="Goýy Goň"><md-icon style="background-color: #ada75b; border-radius:15px 15px 15px 15px;"></md-icon>Серо-Бежевый</md-option>
+                    <md-option  value="Altyn"><md-icon style="background-color: #feca49; border-radius:15px 15px 15px 15px;"></md-icon>Золотой</md-option>
+                    <md-option  value="Narynç"><md-icon style="background-color: #ff7906; border-radius:15px 15px 15px 15px;"></md-icon>Оранжевый</md-option>
+                    <md-option  value="Bürünç"><md-icon style="background-color: #bd5937; border-radius:15px 15px 15px 15px;"></md-icon>Бронзовый</md-option>
+                    <md-option  value="Goňur"><md-icon style="background-color: #974b00; border-radius:15px 15px 15px 15px;"></md-icon>Коричневый</md-option>
+                    <md-option  value="Wişnýa"><md-icon style="background-color: #911e42; border-radius:15px 15px 15px 15px;"></md-icon>Вишневый</md-option>
+                    <md-option  value="Açyk Gyr"><md-icon style="background-color: #b62d3f; border-radius:15px 15px 15px 15px;"></md-icon>Малиновый</md-option>
+                    <md-option  value="Goýy Gyr"><md-icon style="background-color: #c400aa; border-radius:15px 15px 15px 15px;"></md-icon>Пурпурный</md-option>
+                    <md-option  value="Gyzyl"><md-icon style="background-color: #fe0002; border-radius:15px 15px 15px 15px;"></md-icon>Красный</md-option>
+                    <md-option  value="Ýaşyl"><md-icon style="background-color: #28b26f; border-radius:15px 15px 15px 15px;"></md-icon>Зелёный</md-option>
+                    <md-option  value="Gök"><md-icon style="background-color: #3144b6; border-radius:15px 15px 15px 15px;"></md-icon>Синий</md-option>
+                    <md-option  value="Benewşe"><md-icon style="background-color: #5a009d; border-radius:15px 15px 15px 15px;"></md-icon>Фиолетовый</md-option>
+                    <md-option  value="Mawy"><md-icon style="background-color: #78c5f3; border-radius:15px 15px 15px 15px;"></md-icon>Голубой</md-option>
+                    <md-option  value="Çal"><md-icon style="background-color: rgb(186, 186, 186); border-radius:15px 15px 15px 15px;"></md-icon>Серый</md-option>
+                    <md-option  value="Kümüş"><md-icon style="background-color: #a1a1a1; border-radius:15px 15px 15px 15px;"></md-icon>Серебряный</md-option>
+                    <md-option  value="Safari"><md-icon style="background-color: #877f74; border-radius:15px 15px 15px 15px;"></md-icon>Сафари</md-option>
+                    <md-option  value="Gara"><md-icon style="background-color: #000000; border-radius:15px 15px 15px 15px;"></md-icon>Чёрный</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Goşmaça Maglumat-->
+        <div layout="row"  layout-align="center" flex>
+            <md-checkbox flex="50" ng-model="formInfo.alysCalys" aria-label="Checkbox">
+                Обмен?
+            </md-checkbox>
+            <md-checkbox flex="50" ng-model="formInfo.garasykly" aria-label="Checkbox">
+                На Кредит?
+            </md-checkbox>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Называние объявления</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Обязательно заполнить!
+                    </div>
+                    <div ng-message="minlength">Мало не пишите!</div>
+                    <div ng-message="md-maxlength">Много не пишите!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Описание объявления</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Можете написать доп. информацию:
+            Обязательно укажите номер телефона!!!
+            Укажите времья звонка."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Цена</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Укажите цену!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Знак валюты</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Старый Манат (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Новый Манат (TMT)</em></md-option>
+                    <md-option value="$"><em>Доллар ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Обязательно выбрать!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Surat-->
+        <div class="row">
+            <div class="box-inner" style="margin-bottom:4%;">
+                <div class="box-content">
+                    <div class="row" style="margin:1%;">
+                        <div>
+                            <label>Выбранная фотография:</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin:1%;">
+                        <div>
+                            <p>
+                                <img class="" style="width:150px; height:130px;"  ng-src="{{step}}" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <label class="" ng-disabled="maxImgBoldy">
+                        <div style="text-align: center; overflow: hidden; width: 60px; height: 20px; border: 1px solid #038f1a; background-color: #038f1a;" ng-disabled="maxImgBoldy">
+                            <div style="color: #fff; font-size: 20px; font-weight: bold;" ng-disabled="maxImgBoldy">Выбрать</div>
+                            <input  ng-disabled="maxImgBoldy"   file-model = "myFile" type='file' file-input="files" class="input-xlarge" onchange="angular.element(this).scope().imageUpload(event)"
+                                    style="display:none; margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 100px;">
+                        </div>
+                    </label>
+
+                    <div class="row" style="margin:1%;" ng-show="step">
+                        <div class="col-md-4">
+                            <button ng-disabled="maxImgBoldy" class="btn btn-info" ng-click="upload()">
+                                <i class=""></i>
+                                Загрузить
+                            </button>
+                        </div>
+                        <div class="col-md-6" ng-show="isProcessing">
+                            <img class=""  src="ajax-loaders/ajax-loader-5.gif" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="box col-md-8">
+                <div class="box-inner" style="margin-bottom:4%;">
+                    <div>
+                        <h4>Загруженные фотографии</h4>
+                    </div>
+                    <div class="box-content" style="max-height: 500px; overflow:auto;" ng-repeat="iFi in iFile">
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <!--<p>{{iFi}}-->
+                                <img class="img-thumbnail" style="width:50px; height:50px;" ng-src="http://a0109349.xsph.ru/img/surat_{{iFi}}"/> <!-- ng-src="http://a0109349.xsph.ru/img/surat_11133.jpg" />-->
+                                <button ng-click="deletImage(iFi)">Удалить</button>
+                                <!--</p>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Надо все заполнить!!! (Там где есть "*")</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Отправить</md-button>
+        </div>
+    </div>
+</form>

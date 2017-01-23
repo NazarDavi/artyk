@@ -1,0 +1,301 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Welaýatlar</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Ertaplar</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariant}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Dayhan Birlesik (Geňeşlik, Oba)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariant}}({{dayh.konewariant}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Bildirişiň ady</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Hökman doldurmaly!
+                    </div>
+                    <div ng-message="minlength">Az ýazmaň!</div>
+                    <div ng-message="md-maxlength">Köp ýazmaň!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Maglumat</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Goşmaça maglumatlary girizip bilersiňiz:
+            Telefon nomeriňizi belläň!!!
+            Jaň etmeli wagtyny anyklaň."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Bahasy</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Bahasyny görkeziň!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Pul Belligi</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Köne Manat (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Täze Manat (TMT)</em></md-option>
+                    <md-option value="$"><em>Dollar ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Hokman saylamaly!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Surat-->
+        <div class="row">
+            <div class="box-inner" style="margin-bottom:4%;">
+                <div class="box-content">
+                    <div class="row" style="margin:1%;">
+                        <div class="col-md-12">
+                            <label>Ýüklenmeli Surat:</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin:1%;">
+                        <div class="col-md-12">
+                            <p>
+                                <img class="" style="width:150px; height:130px;"  ng-src="{{step}}" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <label class="" ng-disabled="maxImgBoldy">
+                        <div style="text-align: center; overflow: hidden; width: 60px; height: 20px; border: 1px solid #038f1a; background-color: #038f1a;" ng-disabled="maxImgBoldy">
+                            <div style="color: #fff; font-size: 20px; font-weight: bold;" ng-disabled="maxImgBoldy">Surat</div>
+                            <input  ng-disabled="maxImgBoldy"  file-model = "myFile" type='file' file-input="files" class="input-xlarge" onchange="angular.element(this).scope().imageUpload(event)"
+                                    style="display:none; margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 100px;">
+                        </div>
+                    </label>
+
+                    <div class="row" style="margin:1%;" ng-show="step">
+                        <div class="col-md-4">
+                            <button ng-disabled="maxImgBoldy" class="btn btn-info" ng-click="upload()">
+                                <i class=""></i>
+                                Ýükle
+                            </button>
+                        </div>
+                        <div class="col-md-6" ng-show="isProcessing">
+                            <img class=""  src="ajax-loaders/ajax-loader-5.gif" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="box col-md-8">
+                <div class="box-inner" style="margin-bottom:4%;">
+                    <div>
+                        <h4>Ýüklenen Suratlar</h4>
+                    </div>
+                    <div class="box-content" style="max-height: 500px; overflow:auto;" ng-repeat="iFi in iFile">
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <!--<p>{{iFi}}-->
+                                <img class="img-thumbnail" style="width:50px; height:50px;" ng-src="http://a0109349.xsph.ru/img/surat_{{iFi}}"/> <!-- ng-src="http://a0109349.xsph.ru/img/surat_11133.jpg" />-->
+                                <button ng-click="deletImage(iFi)">Pozmak</button>
+                                <!--</p>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Doldurulmadyk ýer galdy!!! ("*" ba ýerlerini)</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Ugratmak</md-button>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Welayat-->
+        <div layout="column">
+            <md-input-container><!-- ng-change="welFil(formInfoKatalog.welayat)"-->
+                <label>Велаят</label>
+                <md-select ng-change="jogapWelayat(formInfo.welayat)" ng-model="formInfo.welayat">
+                    <md-option ng-repeat="welayat in welayatlar" value="{{welayat.wariant}}">{{welayat.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Etraplar-->
+        <div layout="column" ng-if="etrapGorunya">
+            <md-input-container>
+                <label>Этрап</label>
+                <md-select ng-change="jogapEtrap(formInfo.etrap)" ng-model="formInfo.etrap">
+                    <md-option ng-repeat="etrap in etraplar| filter: {haysy: formInfo.welayat}" value="{{etrap.wariant}}">{{etrap.wariantRU}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Dayhan-->
+        <div layout="column" ng-if="dayhanGorunya">
+            <md-input-container><!--| filter: {haysy: formInfo.etrap} ng-show="dayhanGorunya"-->
+                <label>Дайхан Бирлешик (Генгешлик, Село)</label>
+                <md-select  ng-change="jogapDayhan(formInfo.dayh)" ng-model="formInfo.dayh">
+                    <md-option ng-repeat="dayh in dayhan | filter: {haysy: formInfo.etrap}" value="{{dayh.wariant}}">{{dayh.wariantRU}}({{dayh.konewariantRU}})</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <!--Bildirişiň ady-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container>
+                <label>Называние объявления</label>
+                <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+                <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                    <div ng-message="required">
+                        Обязательно заполнить!
+                    </div>
+                    <div ng-message="minlength">Мало не пишите!</div>
+                    <div ng-message="md-maxlength">Много не пишите!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Maglumat-->
+        <div layout="column" layout-align="center" flex>
+            <md-input-container class="md-block">
+                <label>Описание объявления</label>
+                <textarea ng-model="formInfo.maglumat" md-maxlength="600" rows="4" md-select-on-focus
+                          placeholder="
+            Можете написать доп. информацию:
+            Обязательно укажите номер телефона!!!
+            Укажите времья звонка."></textarea>
+            </md-input-container>
+        </div>
+        <!--Bahasy-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Цена</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Укажите цену!</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Знак валюты</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Старый Манат (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Новый Манат (TMT)</em></md-option>
+                    <md-option value="$"><em>Доллар ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Обязательно выбрать!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!--Surat-->
+        <div class="row">
+            <div class="box-inner" style="margin-bottom:4%;">
+                <div class="box-content">
+                    <div class="row" style="margin:1%;">
+                        <div>
+                            <label>Выбранная фотография:</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin:1%;">
+                        <div>
+                            <p>
+                                <img class="" style="width:150px; height:130px;"  ng-src="{{step}}" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <label class="" ng-disabled="maxImgBoldy">
+                        <div style="text-align: center; overflow: hidden; width: 60px; height: 20px; border: 1px solid #038f1a; background-color: #038f1a;" ng-disabled="maxImgBoldy">
+                            <div style="color: #fff; font-size: 20px; font-weight: bold;" ng-disabled="maxImgBoldy">Выбрать</div>
+                            <input  ng-disabled="maxImgBoldy"   file-model = "myFile" type='file' file-input="files" class="input-xlarge" onchange="angular.element(this).scope().imageUpload(event)"
+                                    style="display:none; margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 100px;">
+                        </div>
+                    </label>
+
+                    <div class="row" style="margin:1%;" ng-show="step">
+                        <div class="col-md-4">
+                            <button ng-disabled="maxImgBoldy" class="btn btn-info" ng-click="upload()">
+                                <i class=""></i>
+                                Загрузить
+                            </button>
+                        </div>
+                        <div class="col-md-6" ng-show="isProcessing">
+                            <img class=""  src="ajax-loaders/ajax-loader-5.gif" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="box col-md-8">
+                <div class="box-inner" style="margin-bottom:4%;">
+                    <div>
+                        <h4>Загруженные фотографии</h4>
+                    </div>
+                    <div class="box-content" style="max-height: 500px; overflow:auto;" ng-repeat="iFi in iFile">
+                        <div class="row" style="margin:1%;">
+                            <div class="col-md-12">
+                                <!--<p>{{iFi}}-->
+                                <img class="img-thumbnail" style="width:50px; height:50px;" ng-src="http://a0109349.xsph.ru/img/surat_{{iFi}}"/> <!-- ng-src="http://a0109349.xsph.ru/img/surat_11133.jpg" />-->
+                                <button ng-click="deletImage(iFi)">Удалить</button>
+                                <!--</p>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Hemmesini doldurmansynyz diyen haty çykarjakdym-->
+        <div class="error" ng-show="myForm.$invalid">
+            <b>Надо все заполнить!!! (Там где есть "*")</b>
+        </div>
+        <!--Ugratmak Knopka-->
+        <div><!--ng-disabled="myForm.$invalid"-->
+            <md-button type="submit" ng-disabled="myForm.$invalid" ng-click="ugratmak(formInfo, formInfoKatalog)">Отправить</md-button>
+        </div>
+    </div>
+
+</form>

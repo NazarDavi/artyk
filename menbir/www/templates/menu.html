@@ -1,0 +1,53 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="side-menu21"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <ion-content padding="false"  class="menututus side-menu-left siderenk">
+      <div class="spacer" style="width: 268px; height: 17px;"></div>
+
+
+      <div class="profile" ui-sref="login">
+        <img ng-src="img/4609.jpg" width="100px" height="100px">
+      </div>
+
+      <h3 class="profileName" style=""><div ng-show="userBaza.name">{{userBaza.name}}</div><div ng-hide="userBaza.name"><div ng-show="diliTmRu=='TM'">Siz Kim?</div><div ng-show="diliTmRu=='RU'">Кто Вы?</div></div></h3>
+
+
+        <!--<h4 id="menu-heading9" style="color:#DFDFDF;font-weight:600;text-align:right;"><div ng-show="userBaza.tel">{{userBaza.tel}}</div><div ng-hide="userBaza.tel">Telefon Yok</div></h4>-->
+
+
+      <div class="spacer" style="width: 268px; height: 21px;"></div>
+      <form class="list form_menu">
+
+        <ion-item class="item-icon-left item-icon-right hatlanrenki" ui-sref="menu.meWakansiAlam" menu-close="">
+          <i class="button-small icon ion-bag"></i> <div ng-show="diliTmRu=='TM'">Meň Bildirişlem</div><div ng-show="diliTmRu=='RU'">Мои объявлении</div>
+          <span class="itemnote">{{userBaza.yarayaTawArray.length}}</span>
+        </ion-item>
+        <!--<ion-item class="item-icon-left hatlanrenki side-menu-item1" ui-sref="menu.gWnNZeAranHarytlar" menu-close="">-->
+          <!--<i class="button-small icon ion-ios-heart"></i> <div ng-show="diliTmRu=='TM'">Göwnüme ýaranlary</div><div ng-show="diliTmRu=='RU'">Нравиться</div>-->
+        <!--</ion-item>-->
+
+        <ion-item class="item-icon-left hatlanrenki  side-menu-item1" ui-sref="menu.home" menu-close="">
+          <i class="button-small icon ion-home"></i><div ng-show="diliTmRu=='TM'">Yza dolanmak</div><div ng-show="diliTmRu=='RU'">Домой</div></ion-item>
+        <ion-item class="item-icon-left hatlanrenki  side-menu-item1" ui-sref="menu.ulanmagyDZgNleri" menu-close="">
+          <i class="button-small icon ion-help"></i><div ng-show="diliTmRu=='TM'">Ulanmagyň Düzgunleri</div><div ng-show="diliTmRu=='RU'">Правила использование</div></ion-item>
+        <ion-item class="item-icon-left hatlanrenki  side-menu-item1" ui-sref="menu.habarlaMakIn" menu-close="">
+          <i class="button-small icon ion-information"></i><div ng-show="diliTmRu=='TM'">Habarlasmak üçin</div><div ng-show="diliTmRu=='RU'">Обратная связь</div></ion-item>
+        <div class="spacer" style="width: 268px; height: 34px;"></div>
+
+        <!--<ion-item class="item-icon-left hatlanrenki  side-menu-item1" ui-sref="menu.slideShow" menu-close="">-->
+          <!--<i class="button-small icon ion-plus-circled"></i>Serga cykarmak</ion-item>-->
+        <!--<ion-item class="item-icon-left hatlanrenki  side-menu-item1" ui-sref="menu.gosmak" menu-close="">-->
+          <!--<i class="button-smallicon ion-plus-circled"></i>Serga cykarmak</ion-item>-->
+
+      </form>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

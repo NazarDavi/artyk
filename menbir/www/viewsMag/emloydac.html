@@ -1,0 +1,76 @@
+<form name="myForm">
+
+    <div ng-show="diliTmRu=='TM'">
+        <ion-list>
+            <div ng-show="ot.jaygornus">
+                <ion-item>Görnüşi
+                    <span class="item-note">{{ot.jaygornus}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.etaz">
+                <ion-item>Etaž Sany
+                    <span class="item-note">{{ot.etaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.stenmat">
+                <ion-item>Stenaň Materialy
+                    <span class="item-note">{{ot.stenmat}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jaymeydan">
+                <ion-item>Jaýyň Meýdany (m<sup><small>2</small></sup>-da)
+                    <span class="item-note">{{ot.jaymeydan}}m<sup><small>2</small></sup>-da</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Mellek Meýdany (m<sup><small>2</small></sup>-da)
+                    <span class="item-note">{{ot.meydan}}m<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.daslyk">
+                <ion-item>Şähere Çenli Aralyk
+                    <span class="item-note">{{ot.daslyk}}km</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+
+    <div ng-show="diliTmRu=='RU'">
+        <ion-list>
+            <div ng-show="ot.jaygornus" ng-repeat="re in jaygornusRU | filter:{wariant:ot.jaygornus}">
+                <ion-item>Вид объекта
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.etaz">
+                <ion-item>Этажей в доме
+                    <span class="item-note">{{ot.etaz}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.stenmat" ng-repeat="re in stenmatRU | filter:{wariant:ot.stenmat}">
+                <ion-item>Материал стен
+                    <span class="item-note">{{re.wariantRU}}</span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.jaymeydan">
+                <ion-item>Площадь дома (м<sup><small>2</small></sup>)
+                    <span class="item-note">{{ot.jaymeydan}}м<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.meydan">
+                <ion-item>Площадь участка (м<sup><small>2</small></sup>)
+                    <span class="item-note">{{ot.meydan}}м<sup><small>2</small></sup></span>
+                </ion-item>
+            </div>
+            <div ng-show="ot.daslyk">
+                <ion-item>Расстояние до города
+                    <span class="item-note">{{ot.daslyk}}км</span>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+
+
+
+</form>

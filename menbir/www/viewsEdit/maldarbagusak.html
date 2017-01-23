@@ -1,0 +1,99 @@
+<form name="myForm">
+    <pre>----------------</pre>
+    <span> {{formInfo}} </span>
+    <pre>----------------</pre>
+
+    <!--Welayat-->
+    <div layout="row">
+        <md-input-container>
+            <label>Welayatlar</label>
+            <md-select ng-change="jogapWelayat(formInfo.welayat)" name="WelayatError" ng-model="formInfo.welayat" required>
+                <md-option ng-repeat="welayat in welayatlar" value="{{welayat.value}}">{{welayat.wariant}}
+            </md-select>
+            <div class="errors" ng-messages="myForm.WelayatError.$error">
+                <div ng-message="required">Hokman saylamaly!</div>
+            </div>
+        </md-input-container>
+    </div>
+    <!--Etraplar-->
+    <div layout="row" ng-show="etrapGorunya">
+        <md-input-container>
+            <label>Ertaplar</label>
+            <md-select ng-change="jogapEtrap(formInfo.etrap)" name="EtrapError" ng-model="formInfo.etrap" required>
+                <md-option ng-repeat="etrap in etraplar| filter: {welay:formInfo.welayat}" value="{{etrap.value}}">{{etrap.wariant}}
+            </md-select>
+            <div class="errors" ng-messages="myForm.EtrapError.$error">
+                <div ng-message="required">Hokman saylamaly!</div>
+            </div>
+        </md-input-container>
+    </div>
+    <!--Dayhan-->
+    <div layout="row" ng-show="dayhanGorunya">
+        <md-input-container>
+            <label>Dayhan Birlesik</label>
+            <md-select name="DayhanError" ng-model="formInfo.dayh">
+                <md-option ng-repeat="dayh in dayhan| filter: {dayhanb:formInfo.etrap}" value="{{dayh.value}}">{{dayh.wariant}}
+            </md-select>
+            <div class="errors" ng-messages="myForm.DayhanError.$error">
+                <div ng-message="required">Hokman saylamaly!</div>
+            </div>
+        </md-input-container>
+    </div>
+
+
+    <!--Bildirişiň ady-->
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="50">
+            <label>Bildirişiň ady</label>
+            <input type="text" name="TawarAdyError" ng-model="formInfo.tawarAdy" required minlength='15' md-maxlength="50"/>
+            <div ng-messages="myForm.TawarAdyError.$error" ng-show="myForm.TawarAdyError.$dirty" multiple md-auto-hide="false">
+                <div ng-message="required">
+                    Hökman doldurmaly!
+                </div>
+                <div ng-message="minlength">Az ýazmaň!</div>
+                <div ng-message="md-maxlength">Köp ýazmaň!</div>
+            </div>
+        </md-input-container>
+    </div>
+    <!--Maglumat-->
+    <div layout="row">
+        <md-input-container class="md-block">
+            <label>Maglumat</label>
+            <textarea ng-model="formInfo.maglumat" md-maxlength="1000" rows="1" md-select-on-focus></textarea>
+        </md-input-container>
+    </div>
+    <!--Tölegi-->
+    <md-card-content>
+        <div layout="row">
+            <md-input-container>
+                <label>Bir Düýbiň Bahasy</label>
+                <input name="BahaError" ng-model="formInfo.bahasy" type="number" step="0.1" min="0" required>
+                <div class="errors" ng-messages="myForm.BahaError.$error">
+                    <div ng-message="required">Bahasyny görkeziň!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Pul Belligi</label>
+                <md-select name="PulBelligiErroe" ng-model="formInfo.pulBelligi" required>
+                    <md-option value="TMM (Köne)"><em>Köne Manat (TMM)</em></md-option>
+                    <md-option value="TMT (Täze)"><em>Täze Manat (TMT)</em></md-option>
+                    <md-option value="$"><em>Dollar ($)</em></md-option>
+                </md-select>
+                <div class="errors" ng-messages="myForm.PulBelligiErroe.$error">
+                    <div ng-message="required">Hokman saylamaly!</div>
+                </div>
+            </md-input-container>
+        </div>
+    </md-card-content>
+    <div class="error" ng-show="myForm.$invalid">
+        Aloooooo
+    </div>
+    <button class="button button-stable" ng-disabled="myForm.$invalid" type="submit" ng-click="ugratmak(formInfo, formInfoKatalog)">
+        Ugratmak
+    </button>
+    <!--Ugratmak Knopka-->
+    <!--<div>-->
+        <!--<md-button type="submit" ng-click="ugratmak(formInfo, formInfoKatalog)">Ugratmak</md-button>-->
+    <!--</div>-->
+    <!--<p>444444444444444</p>-->
+</form>

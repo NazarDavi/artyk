@@ -1,0 +1,223 @@
+<form name="myForm">
+    <div ng-if="diliTmRu=='TM'">
+        <!--Iş Wagty-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Iş Wagty</label>
+                <md-select  ng-model="formFilterKatalog.ishWagty">
+                    <md-option  value="Gün Aşa">Gün Aşa</md-option>
+                    <md-option  value="Her Gün">Her Gün</md-option>
+                    <md-option  value="Bäş Günlik">Bäş Günlik</md-option>
+                    <md-option  value="Hepdelik">Hepdelik</md-option>
+                    <md-option  value="Ýigrimi Günlik">Ýigrimi Günlik</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Iş Grafikasy-->
+            <md-input-container flex="50">
+                <label>Iş Grafikasy</label>
+                <md-select  ng-model="formFilterKatalog.ishGrafik">
+                    <md-option  value="Uzak Günlik">Uzak Günlik</md-option>
+                    <md-option  value="Ýarym Günlik">Ýarym Günlik</md-option>
+                    <md-option  value="Sagatlyk">Sagatlyk</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Iş Tejribesi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="30">
+                <label>Iş Tejribesi</label>
+                <md-select  ng-model="formFilterKatalog.ishTejribe">
+                    <md-option  value="--">Ýok</md-option>
+                    <md-option  value="1">1 ýyl</md-option>
+                    <md-option  value="2">2 ýyl</md-option>
+                    <md-option  value="3">3 ýyl</md-option>
+                    <md-option  value="4">4 ýyl</md-option>
+                    <md-option  value="5">5 ýyl</md-option>
+                    <md-option  value="6">6 ýyl</md-option>
+                    <md-option  value="7">7 ýyl</md-option>
+                    <md-option  value="8">8 ýyl</md-option>
+                    <md-option  value="9">9 ýyl</md-option>
+                    <md-option  value="10">10 ýyl</md-option>
+                    <md-option  value="11">11 ýyl</md-option>
+                    <md-option  value="12">12 ýyl</md-option>
+                    <md-option  value="13">13 ýyl</md-option>
+                    <md-option  value="14">14 ýyl</md-option>
+                    <md-option  value="15">15 ýyl</md-option>
+                    <md-option  value="16">16 ýyl</md-option>
+                    <md-option  value="17">17 ýyl</md-option>
+                    <md-option  value="18">18 ýyl</md-option>
+                    <md-option  value="19">19 ýyl</md-option>
+                    <md-option  value="20">20 ýyl</md-option>
+                    <md-option  value="20<">20< ýyl</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Bilim-->
+            <md-input-container flex="70">
+                <label>Bilim</label>
+                <md-select  ng-model="formFilterKatalog.ishBilim">
+                    <md-option  value="Ýokary Bilim">Ýokary Bilim</md-option>
+                    <md-option  value="Gutarylmadyk Ýokary">Gutarylmadyk Ýokary</md-option>
+                    <md-option  value="Ýokary Orta Bilim">Ýokary Orta Bilim</md-option>
+                    <md-option  value="Orta Bilim">Orta Bilim</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Jynsy sany?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Jyns</label>
+                <md-select  ng-model="formFilterKatalog.jynsy">
+                    <md-option  value="Aýal">Aýal</md-option>
+                    <md-option  value="Erkek">Erkek</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Ýaşy sany?-->
+            <md-input-container flex="50">
+                <label>Ýaş</label>
+                <md-select  ng-model="formFilterKatalog.yash">
+                    <md-option  value=">18">>18</md-option>
+                    <md-option  value="18">18</md-option>
+                    <md-option  value="19">19</md-option>
+                    <md-option  value="20">20</md-option>
+                    <md-option  value="21">21</md-option>
+                    <md-option  value="22">22</md-option>
+                    <md-option  value="23">23</md-option>
+                    <md-option  value="24">24</md-option>
+                    <md-option  value="25">25</md-option>
+                    <md-option  value="26">26</md-option>
+                    <md-option  value="27">27</md-option>
+                    <md-option  value="28">28</md-option>
+                    <md-option  value="29">29</md-option>
+                    <md-option  value="30">30</md-option>
+                    <md-option  value="31">31</md-option>
+                    <md-option  value="32">32</md-option>
+                    <md-option  value="33">33</md-option>
+                    <md-option  value="34">34</md-option>
+                    <md-option  value="35">35</md-option>
+                    <md-option  value="36">36</md-option>
+                    <md-option  value="37">37</md-option>
+                    <md-option  value="38">38</md-option>
+                    <md-option  value="39">39</md-option>
+                    <md-option  value="40">40</md-option>
+                    <md-option  value="41">41</md-option>
+                    <md-option  value="42">42</md-option>
+                    <md-option  value="43">43</md-option>
+                    <md-option  value="44">44</md-option>
+                    <md-option  value="45">45</md-option>
+                    <md-option  value="45<">45<</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div ng-if="diliTmRu=='RU'">
+        <!--Iş Wagty-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Времья работы</label>
+                <md-select  ng-model="formFilterKatalog.ishWagty">
+                    <md-option  value="Gün Aşa">Через день</md-option>
+                    <md-option  value="Her Gün">Каждый день</md-option>
+                    <md-option  value="Bäş Günlik">На 5 дней</md-option>
+                    <md-option  value="Hepdelik">На неделю</md-option>
+                    <md-option  value="Ýigrimi Günlik">На 20 дней</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Iş Grafikasy-->
+            <md-input-container flex="50">
+                <label>График работы</label>
+                <md-select  ng-model="formFilterKatalog.ishGrafik">
+                    <md-option  value="Uzak Günlik">Полный день</md-option>
+                    <md-option  value="Ýarym Günlik">Неполный день</md-option>
+                    <md-option  value="Sagatlyk">Часовой</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Iş Tejribesi-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="30">
+                <label>Опыт работы</label>
+                <md-select  ng-model="formFilterKatalog.ishTejribe">
+                    <md-option  value="--">Нет</md-option>
+                    <md-option  value="1">1 год</md-option>
+                    <md-option  value="2">2 года</md-option>
+                    <md-option  value="3">3 года</md-option>
+                    <md-option  value="4">4 года</md-option>
+                    <md-option  value="5">5 лет</md-option>
+                    <md-option  value="6">6 лет</md-option>
+                    <md-option  value="7">7 лет</md-option>
+                    <md-option  value="8">8 лет</md-option>
+                    <md-option  value="9">9 лет</md-option>
+                    <md-option  value="10">10 лет</md-option>
+                    <md-option  value="11">11 лет</md-option>
+                    <md-option  value="12">12 лет</md-option>
+                    <md-option  value="13">13 лет</md-option>
+                    <md-option  value="14">14 лет</md-option>
+                    <md-option  value="15">15 лет</md-option>
+                    <md-option  value="16">16 лет</md-option>
+                    <md-option  value="17">17 лет</md-option>
+                    <md-option  value="18">18 лет</md-option>
+                    <md-option  value="19">19 лет</md-option>
+                    <md-option  value="20">20 лет</md-option>
+                    <md-option  value="20<">20< лет</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Bilim-->
+            <md-input-container flex="70">
+                <label>Образование</label>
+                <md-select  ng-model="formFilterKatalog.ishBilim">
+                    <md-option  value="Ýokary Bilim">Высшее</md-option>
+                    <md-option  value="Gutarylmadyk Ýokary">Незаконченный высшее</md-option>
+                    <md-option  value="Ýokary Orta Bilim">Средее специальное</md-option>
+                    <md-option  value="Orta Bilim">Средее</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <!--Jynsy sany?-->
+        <div layout="row" layout-align="center" flex>
+            <md-input-container flex="50">
+                <label>Пол</label>
+                <md-select  ng-model="formFilterKatalog.jynsy">
+                    <md-option  value="Aýal">Мужской</md-option>
+                    <md-option  value="Erkek">Женский</md-option>
+                </md-select>
+            </md-input-container>
+            <!--Ýaşy sany?-->
+            <md-input-container flex="50">
+                <label>Возраст</label>
+                <md-select  ng-model="formFilterKatalog.yash">
+                    <md-option  value=">18">>18</md-option>
+                    <md-option  value="18">18</md-option>
+                    <md-option  value="19">19</md-option>
+                    <md-option  value="20">20</md-option>
+                    <md-option  value="21">21</md-option>
+                    <md-option  value="22">22</md-option>
+                    <md-option  value="23">23</md-option>
+                    <md-option  value="24">24</md-option>
+                    <md-option  value="25">25</md-option>
+                    <md-option  value="26">26</md-option>
+                    <md-option  value="27">27</md-option>
+                    <md-option  value="28">28</md-option>
+                    <md-option  value="29">29</md-option>
+                    <md-option  value="30">30</md-option>
+                    <md-option  value="31">31</md-option>
+                    <md-option  value="32">32</md-option>
+                    <md-option  value="33">33</md-option>
+                    <md-option  value="34">34</md-option>
+                    <md-option  value="35">35</md-option>
+                    <md-option  value="36">36</md-option>
+                    <md-option  value="37">37</md-option>
+                    <md-option  value="38">38</md-option>
+                    <md-option  value="39">39</md-option>
+                    <md-option  value="40">40</md-option>
+                    <md-option  value="41">41</md-option>
+                    <md-option  value="42">42</md-option>
+                    <md-option  value="43">43</md-option>
+                    <md-option  value="44">44</md-option>
+                    <md-option  value="45">45</md-option>
+                    <md-option  value="45<">45<</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+</form>

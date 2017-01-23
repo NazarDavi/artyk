@@ -1,0 +1,37 @@
+    <!--Garažyň Görnüşi-->
+    <div layout="row">
+        <md-input-container>
+            <label>Garažyň Görnüşi</label>
+            <md-select  ng-model="maglumatlar.gargor">
+                <md-option  value="Beton-dan">Beton-dan</md-option>
+                <md-option  value="Demir-den">Demir-den</md-option>
+                <md-option  value="Kerpiç-den">Kerpiç-den</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <!--Tutýan Meýdany-->
+    <div layout="row">
+        <md-input-container>
+            <label>Tutýan Meýdany (m<sup><small>2</small></sup>-da)</label>
+            <input type="number" step="1" name="meydan" ng-model="maglumatlar.meydan" min="0"
+                   max="40" />
+            <div ng-messages="myForm.meydan.$error" multiple md-auto-hide="false">
+                <div ng-message="min">
+                    Min 0m<sup><small>2</small></sup>
+                </div>
+                <div ng-message="max">
+                    Max 40m<sup><small>2</small></sup>
+                </div>
+            </div>
+        </md-input-container>
+    </div>
+    <!--Goragçy-->
+    <div layout="row">
+        <md-input-container>
+            <label>Goragçy</label>
+            <md-select  ng-model="maglumatlar.gorba">
+                <md-option  value="Bar">Bar</md-option>
+                <md-option  value="Ýok">Ýok</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
